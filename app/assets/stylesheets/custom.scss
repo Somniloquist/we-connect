@@ -1,0 +1,27 @@
+
+// FORMS
+.form-label {
+  color: rgba(0,0,0,0.5);
+  margin-bottom: 0;
+  display: block;
+}
+
+// ERROR MESSAGES
+.alert-danger {
+  li {
+    margin-left: 12px;
+  }
+}
+
+.flash {
+  float: left;
+  width: 100%;
+  margin-top: 10px;
+}
+
+// devise alert
+.alert-alert {
+  color: #856404;
+  background: #fff3cd;
+  border-color: #ffeeba;
+}
