@@ -1,6 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <%= link_to "connectMe", root_path, class: "navbar-brand" %>
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-    <%= link_to "Login", "#", class: "btn btn-outline-light" %>
+    <% if user_signed_in? %>
+      <%= link_to "Sign out", signout_path, method: :delete, class: "btn btn-outline-light" %>
+    <% else %>
+      <%= link_to "Sign up", signup_path, class: "btn btn-light mr-2" %>
+      <%= link_to "Login", signin_path, class: "btn btn-outline-light" %>
+    <% end %>
   </div>
 </nav>
