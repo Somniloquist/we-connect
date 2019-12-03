@@ -1,5 +1,5 @@
 
-<%= form_for(resource, as: resource_name, url: signin_path) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field form-group">
     <%= f.label :email, class: "sr-only" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
