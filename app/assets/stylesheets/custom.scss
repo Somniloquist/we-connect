@@ -35,3 +35,18 @@
   background: #cce5ff;
   border-color: #b8daff;
 }
+
+.profile-icon {
+  img {
+    border-radius: 100px;
+    }
+  }
+
+.no-link-underline {
+  &:hover {
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+  }
+}

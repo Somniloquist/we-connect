@@ -2,6 +2,9 @@
   <%= link_to "weConnect", root_path, class: "navbar-brand" %>
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <% if user_signed_in? %>
+      <%= link_to user_path(current_user), class: "mr-2 profile-icon no-link-underline text-light" do %>
+        <%= gravatar_for(current_user, 30) %> <%= current_user.firstname %> <%= current_user.lastname %>
+      <% end %>
       <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-light" %>
     <% else %>
       <%= link_to "Sign up", new_user_registration_path, class: "btn btn-light mr-2" %>
