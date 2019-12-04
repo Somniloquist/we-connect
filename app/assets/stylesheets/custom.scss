@@ -36,11 +36,17 @@
   border-color: #b8daff;
 }
 
+// user profile
+#profile-header {
+  margin-top: 25px;
+}
 .profile-icon {
   img {
     border-radius: 100px;
     }
   }
+
+// misc
 
 .no-link-underline {
   &:hover {
