@@ -9,4 +9,15 @@ class User < ApplicationRecord
   validates :lastname, presence: true
   validates :birthday, presence: true
   validates :gender, presence: true
+
+  def add_friend(other_user)
+    friends << other_user
+    other_user.friends << self
+  end
+
+  def remove_friend(other_user)
+    friends.delete(other_user)
+    other_user.friends.delete(self)
+  end
+
 end
