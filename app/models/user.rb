@@ -20,4 +20,8 @@ class User < ApplicationRecord
     other_user.friends.delete(self)
   end
 
+  def friends_with?(other_user)
+    self.friends.where(id: other_user.id).empty? ? false : true
+  end
+
 end

@@ -1,9 +1,20 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 john:
+  id: 1
   firstname: john
-  lastname: doe
+  lastname: Doe
   email: john_doe@example.com
   encrypted_password: password
   birthday: <%= Time.now %>
   gender: male
+
+jane:
+  id: 2
+  firstname: Jane
+  lastname: Smith
+  email: jane_smith@example.com
+  encrypted_password: password
+  birthday: <%= Time.now %>
+  gender: female
+  
