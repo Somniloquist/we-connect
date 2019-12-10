@@ -6,12 +6,8 @@
         <%= gravatar_for @user, 160 %>
         <h1><%= "#{@user.firstname} #{@user.lastname}" %></h1>
         <% unless @user == current_user %>
-          <%= link_to "Add friend", user_friendships_path(@user), method: :post, class: "btn btn-primary" %>
-          <% if current_user.friends_with?(@user) %>
-            <%= link_to "Remove friend", user_friendship_path(@user, @friendship), method: :delete, class: "btn btn-primary" %>
-          <% end %>
+          <%= render "friend_form" %>
         <% end %>
-
       </div>
       <div class="col-md-9">
       </div>

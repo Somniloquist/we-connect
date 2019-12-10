@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @friendship = Friendship.where(user_id: current_user.id, friend_id: params[:user_id])
     @user = User.find(params[:id])
+    @friendship = Friendship.find_by(user_id: current_user.id, friend_id: @user.id)
   end
 end
