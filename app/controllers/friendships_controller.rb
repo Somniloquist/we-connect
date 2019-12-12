@@ -3,18 +3,20 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    other_user = User.find(params[:user_id])
-    current_user.add_friend(other_user)
+    @user = User.find(params[:user_id])
+    current_user.add_friend(@user)
     respond_to do |format|
-      format.html { redirect_to other_user }
+      format.html { redirect_to @user }
+      format.js
     end
   end
 
   def destroy
-    other_user = User.find(params[:user_id])
-    current_user.remove_friend(other_user)
+    @user = Friendship.find(params[:id]).friend
+    current_user.remove_friend(@user)
     respond_to do |format|
-      format.html { redirect_to other_user }
+      format.html { redirect_to @user }
+      format.js
     end
   end
 end

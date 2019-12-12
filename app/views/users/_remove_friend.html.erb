@@ -1,3 +1,3 @@
-<%= form_with model: [@user, @friendship], method: :delete do |f| %>
+<%= form_with model: current_user.friendships.find_by(user_id: current_user.id, friend_id: @user.id), method: :delete do |f| %>
   <%= f.submit "- Friend", class: "btn btn-danger" %>
 <% end %> 
