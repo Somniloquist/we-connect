@@ -1,4 +1,3 @@
-
 // FORMS
 .form-label {
   color: rgba(0,0,0,0.5);
@@ -37,9 +36,19 @@
 }
 
 // user profile
-#profile-header {
-  margin-top: 25px;
+#cover-image {
+  height: 50vw;
+  max-height: 640px;
+  min-height: 176px;
+  background: #eaeaea;
 }
+#profile-header {
+  margin-top: -25px;
+}
+#profile-info {
+  margin-top: 2.5rem;
+}
+
 .profile-icon {
   img {
     border-radius: 100px;
