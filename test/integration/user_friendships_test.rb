@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class UserFriendshipsTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers
 
   def setup
     @user = users(:john)
@@ -9,10 +8,34 @@ class UserFriendshipsTest < ActionDispatch::IntegrationTest
     sign_in(@user)
   end
 
-  test "creates a mutual friendship" do
+  test "friend then unfriend a user" do
+    # friend another user
     assert_difference "@other_user.friends.count", 1 do
       assert_difference "@user.friends.count", 1 do
-        post user_friendships_path(@other_user), params: { user_id: @other_user.id }
+        post friendships_path, params: { user_id: @other_user.id }
+      end
+    end
+    # unfriend the user
+    friendship = @user.friendships.find_by(friend_id: @other_user.id)
+    assert_difference "@other_user.friends.count", -1 do
+      assert_difference "@user.friends.count", -1 do
+        delete friendship_path(friendship)
+      end
+    end
+  end
+
+  test "friend then unfriend a user with ajax" do
+    # friend another user
+    assert_difference "@other_user.friends.count", 1 do
+      assert_difference "@user.friends.count", 1 do
+        post friendships_path, xhr: true, params: { user_id: @other_user.id }
+      end
+    end
+    # unfriend the user
+    friendship = @user.friendships.find_by(friend_id: @other_user.id)
+    assert_difference "@other_user.friends.count", -1 do
+      assert_difference "@user.friends.count", -1 do
+        delete friendship_path(friendship), xhr: true
       end
     end
   end

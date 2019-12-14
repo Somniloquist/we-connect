@@ -3,7 +3,7 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user ||= User.find(params[:user_id])
     current_user.add_friend(@user)
     respond_to do |format|
       format.html { redirect_to @user }
