@@ -55,8 +55,15 @@
     }
   }
 
-// misc
+// user friends
+.friend-card {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 0;
+  border-bottom: 1px solid #eaeaea;
+}
 
+// misc
 .no-link-underline {
   &:hover {
     text-decoration: none;

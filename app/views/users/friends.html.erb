@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Friends</h1>
+  <% @friends.each do |friend| %>
+      <div class="row friend-card">
+        <div class="col-md-1">
+          <%= gravatar_for(friend, 60) %>
+        </div>
+        <div class="col-md-11">
+          <%= "#{friend.firstname} #{friend.lastname}" %>
+          <%= render partial: "friend_form", locals: { :@user => friend } unless current_user == friend %>
+      </div>
+    </div>
+  <% end %>
+</div>

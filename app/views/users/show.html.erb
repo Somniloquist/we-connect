@@ -4,12 +4,13 @@
 
   <div id="profile-header" class="container">
     <div class="row">
-      <div class="col-md-2">
-        <%= gravatar_for @user, 160 %>
+      <div class="col-lg-2">
+        <%= gravatar_for @user, 120 %>
       </div>
-      <div class="col-md-10">
+      <div class="col-lg-10">
         <div id="profile-info">
           <h1><%= "#{@user.firstname} #{@user.lastname}" %></h1>
+          <%= link_to pluralize(@number_of_friends, 'friend'), friends_user_path(@user) %>
           <% unless @user == current_user %>
             <%= render "friend_form" %>
           <% end %>
