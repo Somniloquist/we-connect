@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   def friends
     @user = User.find(params[:id])
     @friendships = Friendship.joins(:user).where(user_id: @user, accepted?: true)
-    @friend_requests = Friendship.joins(:user).where(friend_id: current_user, accepted?: false)
+    @friend_requests = Friendship.joins(:user)
+                                 .where(friend_id: current_user, accepted?: false)
+                                 .where.not(requested_by_id: @user.id)
   end
 end

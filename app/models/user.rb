@@ -13,7 +13,7 @@ class User < ApplicationRecord
   def add_friend(other_user)
     # build mutual friendships
     friendships.build(friend_id: other_user.id, requested_by_id: id).save
-    other_user.friendships.build(friend_id: id, requested_by_id: other_user.id).save
+    other_user.friendships.build(friend_id: id, requested_by_id: id).save
   end
 
   def remove_friend(other_user)
