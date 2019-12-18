@@ -11,8 +11,9 @@ class User < ApplicationRecord
   validates :gender, presence: true
 
   def add_friend(other_user)
-    friends << other_user
-    other_user.friends << self
+    # build mutual friendships
+    friendships.build(friend_id: other_user.id, requested_by_id: id).save
+    other_user.friendships.build(friend_id: id, requested_by_id: other_user.id).save
   end
 
   def remove_friend(other_user)

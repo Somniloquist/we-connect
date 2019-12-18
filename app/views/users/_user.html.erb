@@ -3,4 +3,5 @@
     <td><%= user.email %></td>
     <td><%= user.birthday %></td>
     <td><%= user.created_at %></td>
+    <td><%= render partial: "friend_form", locals: { :@user => user } unless current_user == user %></td>
 </tr>
