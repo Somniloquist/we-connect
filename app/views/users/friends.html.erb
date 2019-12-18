@@ -1,13 +1,15 @@
 <div class="container">
+  <%= render "friend_requests" if current_user == @user %>  
+
   <h1>Friends</h1>
-  <% @friends.each do |friend| %>
-      <div class="row friend-card">
-        <div class="col-md-1">
-          <%= gravatar_for(friend, 60) %>
-        </div>
-        <div class="col-md-11">
-          <%= "#{friend.firstname} #{friend.lastname}" %>
-          <%= render partial: "friend_form", locals: { :@user => friend } unless current_user == friend %>
+  <% @friendships.each do |friendship| %>
+    <div class="row friend-card">
+      <div class="col-md-1">
+        <%= gravatar_for(friendship.friend, 60) %>
+      </div>
+      <div class="col-md-11">
+        <%= "#{friendship.friend.firstname} #{friendship.friend.lastname}" %>
+        <%= render partial: "friend_form", locals: { :@user => friendship.friend } unless friendship.friend == current_user %>
       </div>
     </div>
   <% end %>

@@ -1,0 +1,12 @@
+<h1>Friend requests</h1>
+<% @friend_requests.each do |friendship| %>
+    <div class="row friend-card">
+      <div class="col-md-1">
+        <%= gravatar_for(friendship.user, 60) %>
+      </div>
+      <div class="col-md-11">
+        <%= "#{friendship.user.firstname} #{friendship.user.lastname}" %>
+        <%= render partial: "friend_request_form", locals: { :@friendship => friendship } %>
+      </div>
+    </div>
+  <% end %>

@@ -1,6 +1,4 @@
 class FriendshipsController < ApplicationController
-  def index
-  end
 
   def create
     @user ||= User.find(params[:user_id])
@@ -19,4 +17,14 @@ class FriendshipsController < ApplicationController
       format.js
     end
   end
+
+  def update
+    @friendship = Friendship.find(params[:friendship_id])
+    @friendship.accept
+    respond_to do |format|
+      format.html { redirect_to friends_user_path(current_user)}
+      format.js
+    end
+  end
+
 end
