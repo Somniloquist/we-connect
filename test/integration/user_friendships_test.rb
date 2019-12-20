@@ -15,6 +15,8 @@ class UserFriendshipsTest < ActionDispatch::IntegrationTest
         post friendships_path, params: { user_id: @other_user.id }
       end
     end
+    follow_redirect!
+    assert_select "li#friend-request-notification", 0
     # unfriend the user
     friendship = @user.friendships.find_by(friend_id: @other_user.id)
     assert_difference "@other_user.friends.count", -1 do
@@ -22,6 +24,8 @@ class UserFriendshipsTest < ActionDispatch::IntegrationTest
         delete friendship_path(friendship)
       end
     end
+    follow_redirect!
+    assert_select "li#friend-request-notification", 0
   end
 
   test "friend then unfriend a user with ajax" do

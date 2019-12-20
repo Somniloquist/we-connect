@@ -25,4 +25,13 @@ class User < ApplicationRecord
     self.friends.where(id: other_user.id).empty? ? false : true
   end
 
+  def friend_requests
+    Friendship.joins(:user).where(friend_id: id, accepted?: false)
+                           .where.not(requested_by_id: id)
+  end
+
+  def has_pending_friend_requests?
+    friend_requests.count > 0
+  end
+
 end
