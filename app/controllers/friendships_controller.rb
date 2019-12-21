@@ -4,7 +4,7 @@ class FriendshipsController < ApplicationController
     @user ||= User.find(params[:user_id])
     current_user.add_friend(@user)
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_back fallback_location: friends_user_path(@user) }
       format.js
     end
   end
@@ -13,7 +13,7 @@ class FriendshipsController < ApplicationController
     @user = Friendship.find(params[:id]).friend
     current_user.remove_friend(@user)
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_back fallback_location: friends_user_path(@user) }
       format.js
     end
   end

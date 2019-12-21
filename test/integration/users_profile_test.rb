@@ -13,7 +13,7 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     assert_template "users/show"
     assert_select "form#add-friend-form"
     post friendships_path, params: { user_id: @other_user.id }
-    follow_redirect!
+    get user_path(@other_user)
     assert_select "form#remove-friend-form"
   end
 end
