@@ -1,9 +1,16 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+most_recent:
+  body: "This is the most recent post"
+  created_at: <%= Time.now %>
+  user: john
 
-one:
-  user: one
-  body: MyString
+apple:
+  body: "apple apple apple"
+  created_at: <%= 15.minutes.ago %>
+  user: jane
 
-two:
-  user: two
-  body: MyString
+<% 10.times do |n| %>
+post_<%= n %>:
+  body: "Lorem Ipsum"
+  created_at: <%= 10.days.ago %>
+  user: john
+<% end %>
