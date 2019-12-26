@@ -1,11 +1,16 @@
-<div class=" post-card">
+<div class="container post-card">
   <div class="row">
-    <span class="post-info">
-      <%= "Posted #{distance_of_time_in_words(Time.now, post.created_at)} by" %>
-      <%= link_to("#{post.user.firstname} #{post.user.lastname}", user_path(post.user)) %>
-    </span>
+    <div class="col-2 col-md-1">
+      <%= link_to gravatar_for(post.user, 50), user_path(post.user) %>
+    </div>
+
+    <div class="col-10 col-md-11">
+      <span class="post-info">
+        <%= "Posted #{distance_of_time_in_words(Time.now, post.created_at)} by" %>
+        <%= link_to("#{post.user.firstname} #{post.user.lastname}", user_path(post.user)) %>
+      </span>
+      <p><%= post.body %></p>
+    </div>
   </div>
-  <div class="row">
-    <p><%= post.body %></p>
-  </div>
+
 </div>
