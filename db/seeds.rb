@@ -14,3 +14,9 @@
               birthday: Time.now,
               gender: "male")
 end
+
+User.all.each do |user|
+  3.times do |i|
+    user.posts.build(body: Faker::Lorem.paragraph).save
+  end
+end
