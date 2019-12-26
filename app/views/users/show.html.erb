@@ -19,7 +19,8 @@
     </div>
   </div>
 
-  <div id="timeline">
+  <div id="timeline" class="container">
+    <%= render "posts/posts_form" if @user == current_user %>
     <%= render @posts %>
   </div>
 
