@@ -1,0 +1,11 @@
+<div class=" post-card">
+  <div class="row">
+    <span class="post-info">
+      <%= "Posted #{distance_of_time_in_words(Time.now, post.created_at)} by" %>
+      <%= link_to("#{post.user.firstname} #{post.user.lastname}", user_path(post.user)) %>
+    </span>
+  </div>
+  <div class="row">
+    <p><%= post.body %></p>
+  </div>
+</div>
