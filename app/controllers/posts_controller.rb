@@ -6,7 +6,6 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = current_user.posts.build
   end
 
   def create
@@ -14,7 +13,7 @@ class PostsController < ApplicationController
     if @post.save
       flash[:success] = "Post created!"
     else
-      flash[:warning] = "Something went wrong"
+      flash[:warning] = "Post can't be empty."
     end
     redirect_to current_user
   end

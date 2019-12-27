@@ -64,6 +64,20 @@
 }
 
 // posts
+#post-form {
+  margin: 15px;
+  .form-group {
+    margin: 0;
+  }
+  .btn {
+    margin-top: 10px;
+  }
+  textarea {
+    height: 100px;
+    width: 100%;
+    border: 1px solid #eaeaea;
+  }
+}
 .post-card {
   padding: 10px;
   margin-top: 10px;
