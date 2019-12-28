@@ -8,6 +8,11 @@ apple:
   created_at: <%= 15.minutes.ago %>
   user: jane
 
+orange:
+  body: "orange orange orange"
+  created_at: <%= 25.minutes.ago %>
+  user: jane
+
 <% 10.times do |n| %>
 post_<%= n %>:
   body: "Lorem Ipsum"
