@@ -1,9 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  user: john
-  post: apple
+  user_id: 1
+  post_id: 1
 
 two:
-  user: john
-  post: orange
+  user_id: 1
+  post_id: 2

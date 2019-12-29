@@ -4,11 +4,13 @@ most_recent:
   user: john
 
 apple:
+  id: 1
   body: "apple apple apple"
   created_at: <%= 15.minutes.ago %>
   user: jane
 
 orange:
+  id: 2
   body: "orange orange orange"
   created_at: <%= 25.minutes.ago %>
   user: jane
