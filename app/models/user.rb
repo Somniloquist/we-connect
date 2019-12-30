@@ -37,8 +37,8 @@ class User < ApplicationRecord
     post.likes.build(user: self).save
   end
 
-  def unlike(post)
-    Like.find_by(user_id: id, post_id: post.id).delete
+  def unlike(like)
+    like.delete
   end
 
   def likes?(post)

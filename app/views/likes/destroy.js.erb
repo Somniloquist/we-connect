@@ -1,0 +1,2 @@
+$("#post-likes-form-<%= @post.id %>").html("<%= escape_javascript(render('form')) %>");
+$("#likes-<%= @post.id %>").html("<%=j link_to(pluralize(@post.likes.count, 'like'), likes_post_path(@post), class: 'btn post-link') %>");
