@@ -37,6 +37,14 @@ class User < ApplicationRecord
     post.likes.build(user: self).save
   end
 
+  def unlike(post)
+    Like.find_by(user_id: id, post_id: post.id).delete
+  end
+
+  def likes?(post)
+    likes.find_by(post_id:  post.id) ? true : false
+  end
+
   def has_pending_friend_requests?
     friend_requests.count > 0
   end

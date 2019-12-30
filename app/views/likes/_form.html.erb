@@ -1,4 +1,14 @@
-<%= form_with model: post.likes.build do |f| %>
-  <div><%= hidden_field_tag :post_id, post.id %></div>
-  <%= f.submit "Like this post", class: "btn post-link" %>
+<% unless current_user.likes?(post) %>
+
+  <%= form_with model: post.likes.build do |f| %>
+    <div><%= hidden_field_tag :post_id, post.id %></div>
+    <%= f.submit "+ like", class: "btn post-link" %>
+  <% end %>
+
+<% else %>
+
+  <%= form_with url: like_path(post), method: :delete do |f| %>
+    <%= f.submit "- like", class: "btn post-link" %>
+  <% end %>
+
 <% end %>

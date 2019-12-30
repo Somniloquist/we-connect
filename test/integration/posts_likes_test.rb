@@ -18,13 +18,20 @@ class LikesTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "liking a post updates the like count" do 
+  test "like then unlike a post" do 
     get post_path(@post)
     likes = @post.likes.count
     assert_match "#{pluralize(likes, 'like')}", response.body
+    # like the post
+    assert_match "+ like", response.body
     post likes_path, params: { post_id: @post.id, user_id: @user.id }
     follow_redirect!
     assert_template "posts/show"
     assert_match "#{pluralize(likes + 1, 'like')}", response.body
+    # unlike the post
+    assert_match "- like", response.body
+    delete like_path(@post)
+    follow_redirect!
+    assert_match "#{pluralize(likes, 'like')}", response.body
   end
 end
