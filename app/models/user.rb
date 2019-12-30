@@ -33,6 +33,10 @@ class User < ApplicationRecord
                            .where.not(requested_by_id: id)
   end
 
+  def like(post)
+    post.likes.build(user: self).save
+  end
+
   def has_pending_friend_requests?
     friend_requests.count > 0
   end

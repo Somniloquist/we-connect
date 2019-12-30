@@ -10,6 +10,10 @@
         <%= link_to("#{post.user.firstname} #{post.user.lastname}", user_path(post.user)) %>
       </span>
       <p><%= post.body %></p>
+      <span class="row post-info">
+        <%= render partial: "likes/form", locals: { post: post } %>
+        <%= link_to pluralize(post.likes.count, "like"), likes_post_path(post) %>
+      </span>
     </div>
   </div>
 

@@ -5,7 +5,8 @@ class LikesTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:john)
-    @post = posts(:apple)
+    @post = posts(:orange)
+    sign_in(@user)
   end
 
   test "post likes page shows correctly" do
@@ -23,6 +24,7 @@ class LikesTest < ActionDispatch::IntegrationTest
     assert_match "#{pluralize(likes, 'like')}", response.body
     post likes_path, params: { post_id: @post.id, user_id: @user.id }
     follow_redirect!
+    assert_template "posts/show"
     assert_match "#{pluralize(likes + 1, 'like')}", response.body
   end
 end

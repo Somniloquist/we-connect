@@ -1,19 +1,19 @@
 most_recent:
   body: "This is the most recent post"
   created_at: <%= Time.now %>
-  user: john
+  user_id: 1
 
 apple:
   id: 1
   body: "apple apple apple"
   created_at: <%= 15.minutes.ago %>
-  user: jane
+  user_id: 2
 
 orange:
   id: 2
   body: "orange orange orange"
   created_at: <%= 25.minutes.ago %>
-  user: jane
+  user_id: 2
 
 <% 10.times do |n| %>
 post_<%= n %>:
