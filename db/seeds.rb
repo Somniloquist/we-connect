@@ -6,6 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+  User.create!(firstname: "Robin",
+              lastname: "Unger",
+              email: "robin.e.unger@gmail.com",
+              password: "password",
+              birthday: Time.now,
+              gender: "male")
+
 10.times do |i|
   User.create!(firstname: "Test",
               lastname: "User-#{i}",
@@ -16,7 +23,8 @@
 end
 
 User.all.each do |user|
-  3.times do |i|
+  5.times do |i|
     user.posts.build(body: Faker::Lorem.paragraph).save
   end
+  user.posts.build(body: Faker::Lorem.paragraph(sentence_count: 50)).save
 end

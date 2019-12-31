@@ -9,7 +9,7 @@
         <%= "Posted #{distance_of_time_in_words(Time.now, post.created_at)} by" %>
         <%= link_to("#{post.user.firstname} #{post.user.lastname}", user_path(post.user)) %>
       </span>
-      <p><%= post.body %></p>
+      <div class="post-content"><%= simple_format(post.body) %></div>
       <span class="row post-info">
         <%= link_to "View post", post_path(post), class: "btn post-link" %>
         <%= render partial: "likes/form", locals: { :@post => post } %>
