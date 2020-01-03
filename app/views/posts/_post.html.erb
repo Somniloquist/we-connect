@@ -19,7 +19,7 @@
       </div>
 
       <span class="row post-info">
-        <%= link_to "View post", post_path(post), class: "btn post-link" %>
+        <%= link_to pluralize(post.comments.count, "comment"), post_path(post), class: "btn post-link" %>
         <%= render partial: "likes/form", locals: { :@post => post } %>
         <span id="likes-<%= post.id %>">
           <%= link_to pluralize(post.likes.count, "like"), likes_post_path(post), class: "btn post-link" %>
@@ -32,10 +32,7 @@
 <% unless controller_name == "users" %>
 
   <% unless @comments.empty? %>
-    <div>
-      <h2><%= pluralize(@comments.count, "comment") %></h2>
-      <%= render @comments %>
-    </div>
+    <%= render @comments %>
   <% else %>
     <p>Nobody has commented yet :(</p>
   <% end %>
