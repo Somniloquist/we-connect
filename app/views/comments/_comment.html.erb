@@ -1,0 +1,7 @@
+<div class="row">
+  <%= gravatar_for(comment.user, 50) %>
+  <%= " #{comment.user.firstname} #{comment.user.lastname}" %> - <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago
+</div>
+<div class="row">
+  <%= comment.body %>
+</div>

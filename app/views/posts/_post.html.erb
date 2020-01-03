@@ -27,5 +27,17 @@
       </span>
     </div>
   </div>
-
 </div>
+
+<% unless controller_name == "users" %>
+
+  <% unless @comments.empty? %>
+    <div>
+      <h2><%= pluralize(@comments.count, "comment") %></h2>
+      <%= render @comments %>
+    </div>
+  <% else %>
+    <p>Nobody has commented yet :(</p>
+  <% end %>
+
+<% end %>

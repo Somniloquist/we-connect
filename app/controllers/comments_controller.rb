@@ -7,12 +7,23 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @comment = @commentable.comments.new(comment_params)
+    @comment.user = current_user
+    if @comment.save
+      flash[:succes] = "Comment posted!"
+    else
+      flash[:warning] = "Something went wrong, please try again."
+    end
+    redirect_back fallback_location: post_path(@commentable)
   end
 
   def delete
   end
 
   private
+    def comment_params
+      params.require(:comment).permit(:body)
+    end
     # Assigns commentable id whether parent is a post or another comment
     def find_commentable
       @commentable = Post.find(params[:post_id]) if params[:post_id]
