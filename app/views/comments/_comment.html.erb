@@ -1,19 +1,14 @@
 <div class="comment">
 
-  <div class="row">
-    <div class="col-12">
-      <%= gravatar_for(comment.user, 50) %>
-      <%= " #{comment.user.firstname} #{comment.user.lastname}" %> - <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago
+    <div class="comment-content">
+      <div class="post-info no-link-underline">
+        <%= link_to("#{comment.user.firstname} #{comment.user.lastname}", user_path(comment.user), class: "post-link") %> - <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago
+      </div>
+      <p class="comment-body"><%= comment.body %></p>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <%= comment.body %>
-    </div>
-  </div>
 
-  <div class="indent-comment">
-    <%= render comment.comments unless comment.comments.empty? %>
-  </div>
+</div>
 
+<div class="indent-comment">
+  <%= render comment.comments unless comment.comments.empty? %>
 </div>
