@@ -19,7 +19,7 @@
       </div>
 
       <span class="row post-info">
-        <%= link_to pluralize(post.comments.count, "comment"), post_path(post), class: "btn post-link" %>
+        <%= link_to pluralize(post.comments_count, "comment"), post_path(post), class: "btn post-link" %>
         <%= render partial: "likes/form", locals: { :@post => post } %>
         <span id="likes-<%= post.id %>">
           <%= link_to pluralize(post.likes.count, "like"), likes_post_path(post), class: "btn post-link" %>

@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
     else
       flash[:warning] = "Something went wrong, please try again."
     end
-    redirect_back fallback_location: post_path(@commentable)
+    redirect_back fallback_location: post_path(@comment.parent_post)
   end
 
   def delete
