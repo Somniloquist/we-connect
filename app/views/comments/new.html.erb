@@ -1,2 +1,8 @@
-<h1>Comments#new</h1>
-<p>Find me in app/views/comments/new.html.erb</p>
+<% provide(:url, comment_comments_path(@reply_to_comment)) %>
+<div class="container">
+  <% if controller_name == "comments" %>
+    <%= link_to "<< Go back to post", post_path(@reply_to_comment.parent_post), class: "btn btn-link" %>
+    <%= render @reply_to_comment %>
+  <% end %>
+  <%= render "form" %>
+</div>

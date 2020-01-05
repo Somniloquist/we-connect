@@ -10,6 +10,7 @@
         <%= link_to("#{post.user.firstname} #{post.user.lastname}", user_path(post.user)) %>
       </span>
 
+      <% provide(:url, post_comments_path(post)) %>
       <div class="post-content">
         <% if controller_name == "users" %>
           <%= simple_format(truncate(post.body, length: 255)) %>

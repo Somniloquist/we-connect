@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
+    @reply_to_comment = Comment.find(params[:comment_id])
   end
 
   def create

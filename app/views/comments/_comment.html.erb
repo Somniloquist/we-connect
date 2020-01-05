@@ -12,6 +12,8 @@
 
 </div>
 
-<div class="indent-comment">
-  <%= render comment.comments unless comment.comments.empty? %>
-</div>
+<% unless controller_name == "comments" %>
+  <div class="indent-comment">
+    <%= render comment.comments unless comment.comments.empty? %>
+  </div>
+<% end %>
