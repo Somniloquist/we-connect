@@ -1,0 +1,1 @@
+$( ".comment-<%= @reply_to_comment.id %>" ).append("<%=provide(:url, comment_comments_path(@reply_to_comment)); escape_javascript(render('form')) %>");

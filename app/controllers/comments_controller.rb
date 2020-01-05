@@ -5,6 +5,10 @@ class CommentsController < ApplicationController
   def new
     @comment = Comment.new
     @reply_to_comment = Comment.find(params[:comment_id])
+    respond_to do |format|
+      format.html { render :new }
+      format.js
+    end
   end
 
   def create
