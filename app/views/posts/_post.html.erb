@@ -33,10 +33,12 @@
 
   <%= render "comments/form" %>
 
-  <% unless @comments.empty? %>
-    <%= render @comments %>
-  <% else %>
-    <p>Nobody has commented yet :(</p>
-  <% end %>
+  <div class="m-neg-15">
+    <% unless @comments.empty? %>
+      <%= render @comments %>
+    <% else %>
+      <p>Nobody has commented yet :(</p>
+    <% end %>
+  </div>
 
 <% end %>
