@@ -31,6 +31,8 @@
 
 <% unless controller_name == "users" %>
 
+  <%= render "comments/form" %>
+
   <% unless @comments.empty? %>
     <%= render @comments %>
   <% else %>

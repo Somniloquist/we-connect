@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
-      flash[:succes] = "Comment posted!"
+      flash[:success] = "Comment posted!"
     else
       flash[:warning] = "Something went wrong, please try again."
     end
