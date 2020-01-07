@@ -22,9 +22,11 @@ class UserFriendshipsTest < ActionDispatch::IntegrationTest
     assert_select "li#friend-request-notification", 0
     sign_out @user
     sign_in @other_user
-    get root_path
-    follow_redirect!
+    get friends_user_path(@other_user)
     assert_select "li#friend-request-notification", 1
+    # friends name and email shows up correctly
+    assert_match "#{@user.firstname} #{@user.lastname}", response.body
+    assert_match @user.email, response.body
     patch friendship_path(@other_user), params: { friendship_id: @other_user.friend_requests.last.id }
     assert_select "li#friend-request-notification", 0
     sign_out @other_user

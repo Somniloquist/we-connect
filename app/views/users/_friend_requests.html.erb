@@ -2,11 +2,11 @@
 <% @friend_requests.each do |friendship| %>
     <div class="row friend-card">
       <div class="col-3 col-sm-2"> 
-        <div><%= link_to gravatar_for(friendship.friend, 50), user_path(friendship.friend) %></div>
+        <div><%= link_to gravatar_for(friendship.user, 50), user_path(friendship.user) %></div>
       </div>
       <div class="col-7">
-        <div><%= link_to "#{friendship.friend.firstname} #{friendship.friend.lastname}", user_path(friendship.friend) %></div>
-        <div><%= friendship.friend.email %></div>
+        <div><%= link_to "#{friendship.user.firstname} #{friendship.user.lastname}", user_path(friendship.user) %></div>
+        <div><%= friendship.user.email %></div>
       </div>
       <div class="col-2">
         <%= render partial: "friend_request_form", locals: { :@friendship => friendship } %>
