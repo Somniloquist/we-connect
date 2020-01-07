@@ -1,1 +1,3 @@
-$( ".comment-<%= @reply_to_comment.id %>" ).append("<%=provide(:url, comment_comments_path(@reply_to_comment)); escape_javascript(render('form')) %>");
+$( ".comment-<%= @commentable.id %>" ).append("<%=provide(:url, comment_comments_path(@commentable.id)); escape_javascript(render('form')) %>");
+var comment_form = "a[href='/comments/"+<%=@commentable.id%>+"/comments/new']";
+$(comment_form).attr('href', "<%= toggle_form_comment_path(@commentable.id) %>");

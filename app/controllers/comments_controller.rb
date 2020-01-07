@@ -1,10 +1,11 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_commentable
+  before_action :find_commentable, only: [:new, :create, :delete]
 
   def new
-    @comment = Comment.new
-    @reply_to_comment = Comment.find(params[:comment_id])
+    @comment = @commentable.comments.new
+    # jquery uses commentable_id to target the dynamic form
+    @commentable_id = @commentable.id
     respond_to do |format|
       format.html { render :new }
       format.js
@@ -23,6 +24,11 @@ class CommentsController < ApplicationController
   end
 
   def delete
+  end
+
+  def toggle_form
+    @commentable = Comment.find(params[:id])
+    respond_to :js
   end
 
   private

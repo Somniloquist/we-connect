@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: [] do
+    get :toggle_form, on: :member
     resources :comments, only: [:new, :create, :delete]
   end
 end

@@ -1,8 +1,8 @@
-<% provide(:url, comment_comments_path(@reply_to_comment)) %>
+<% provide(:url, comment_comments_path(@commentable)) %>
 <div class="container">
   <% if controller_name == "comments" %>
-    <%= link_to "<< Go back to post", post_path(@reply_to_comment.parent_post), class: "btn btn-link" %>
-    <%= render @reply_to_comment %>
+    <%= link_to "<< Go back to post", post_path(@commentable.parent_post), class: "btn btn-link" %>
+    <%= render @commentable %>
   <% end %>
   <%= render "form" %>
 </div>

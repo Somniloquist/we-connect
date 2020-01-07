@@ -1,5 +1,5 @@
 <div class="row">
-  <%= form_with model: @comment, scope: :comment, url: yield(:url), class: "full-width-form w-100" do |f| %>
+  <%= form_with model: @comment, scope: :comment, url: yield(:url), class: "comment-form-#{@commentable_id} full-width-form w-100" do |f| %>
 
     <div class="form-group">
       <%= f.label :body, class: "sr-only" %>
