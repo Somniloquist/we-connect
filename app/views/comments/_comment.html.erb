@@ -4,7 +4,7 @@
       <div class="post-info no-link-underline">
         <%= link_to("#{comment.user.firstname} #{comment.user.lastname}", user_path(comment.user)) %> - <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago
       </div>
-      <p class="comment-body"><%= comment.body %></p>
+      <p class="comment-body"><%= simple_format(comment.body) %></p>
       <li class="row comment-actions">
         <ul><%= link_to "Reply", new_comment_comment_path(comment), class: "btn post-link", remote: true %>
       </li>
