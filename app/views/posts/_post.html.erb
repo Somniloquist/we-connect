@@ -32,7 +32,9 @@
 
 <% unless controller_name == "users" %>
 
-  <%= render "comments/form" %>
+  <div class="row">
+    <%= render "comments/form" %>
+  </div>
 
   <div class="m-neg-15">
     <% unless @comments.empty? %>
