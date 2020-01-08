@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     else
       flash[:warning] = "Post can't be empty."
     end
-    redirect_to current_user
+    redirect_to posts_path
   end
 
   def update

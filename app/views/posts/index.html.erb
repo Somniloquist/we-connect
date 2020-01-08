@@ -1,8 +1,6 @@
 <div class="container">
-  <h1>Your Feed</h1>
-  <div class="row">
-    <%= render "comments/form" %>
-  </div>
+  <h1>Latest Posts</h1>
+  <%= render "form" %>
   <% @feed.each do |post| %>
     <%= render post %>
   <% end %>

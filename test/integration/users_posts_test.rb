@@ -14,6 +14,7 @@ class UsersPostsTest < ActionDispatch::IntegrationTest
       post posts_path params: { post: { body: "this is a test" } }
     end
     follow_redirect!
+    assert_template "posts/index"
     assert_select "div.post-card", posts + 1
   end
 end

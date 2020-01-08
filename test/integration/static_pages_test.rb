@@ -11,10 +11,10 @@ class StaticPagesTest < ActionDispatch::IntegrationTest
     assert_select "form#new_user"
   end
 
-  test "redirect to users profile when signed in" do
+  test "redirect to users feed when signed in" do
     sign_in @user
     get root_path
     follow_redirect!
-    assert_template "users/show"
+    assert_template "posts/index"
   end
 end
