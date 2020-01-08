@@ -7,7 +7,7 @@
     <div class="col-10 col-md-11">
       <span class="post-info">
         <%= "Posted #{distance_of_time_in_words(Time.now, post.created_at)} by" %>
-        <%= link_to("#{post.user.firstname} #{post.user.lastname}", user_path(post.user)) %>
+        <%= link_to("#{post.user.fullname}", user_path(post.user)) %>
       </span>
 
       <% provide(:url, post_comments_path(post)) %>

@@ -3,7 +3,7 @@
         <div><%= link_to gravatar_for(user, 50), user_path(user) %></div>
     </div>
     <div class="col-7">
-        <div><%= link_to "#{user.firstname} #{user.lastname}", user_path(user) %></div>
+        <div><%= link_to "#{user.fullname}", user_path(user) %></div>
         <div><%= user.email %></div>
     </div>
     <div class="col-2">

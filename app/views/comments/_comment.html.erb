@@ -2,7 +2,7 @@
 
     <div class="comment-content">
       <div class="post-info no-link-underline">
-        <%= link_to("#{comment.user.firstname} #{comment.user.lastname}", user_path(comment.user)) %> - <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago
+        <%= link_to(comment.user.fullname, user_path(comment.user)) %> - <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago
       </div>
       <p class="comment-body"><%= simple_format(comment.body) %></p>
       <li class="row comment-actions">

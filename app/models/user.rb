@@ -14,6 +14,10 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :gender, presence: true
 
+  def fullname
+    "#{firstname} #{lastname}"
+  end
+
   def add_friend(other_user)
     # build mutual friendships
     friendships.build(friend_id: other_user.id, requested_by_id: id).save
