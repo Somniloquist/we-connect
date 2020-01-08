@@ -8,7 +8,7 @@
         <div><%= link_to gravatar_for(friendship.friend, 50), user_path(friendship.friend) %></div>
       </div>
       <div class="col-7">
-        <div><%= link_to "#{friendship.fullname}", user_path(friendship.friend) %></div>
+        <div><%= link_to "#{friendship.friend.fullname}", user_path(friendship.friend) %></div>
         <div><%= friendship.friend.email %></div>
       </div>
       <div class="col-2">
