@@ -9,7 +9,6 @@ class UsersPostsTest < ActionDispatch::IntegrationTest
   test "should create a new post" do
     get user_path @user
     posts = @user.posts.count
-    assert_select "form#post-form"
     assert_select "div.post-card", posts
     assert_difference "Post.count", 1 do
       post posts_path params: { post: { body: "this is a test" } }

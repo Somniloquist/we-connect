@@ -1,4 +1,9 @@
-<h1>Your Feed</h1>
-<% @feed.each do |post| %>
-  <%= render post %>
-<% end %>
+<div class="container">
+  <h1>Your Feed</h1>
+  <div class="row">
+    <%= render "comments/form" %>
+  </div>
+  <% @feed.each do |post| %>
+    <%= render post %>
+  <% end %>
+</div>
