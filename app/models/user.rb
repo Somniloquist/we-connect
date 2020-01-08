@@ -54,4 +54,8 @@ class User < ApplicationRecord
     friend_requests.count > 0
   end
 
+  def feed
+    Post.where("user_id IN (:friend_ids) OR user_id = :user_id", friend_ids: friend_ids, user_id: id)
+  end
+
 end

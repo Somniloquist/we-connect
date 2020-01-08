@@ -1,2 +1,4 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h1>Your Feed</h1>
+<% @feed.each do |post| %>
+  <%= render post %>
+<% end %>
