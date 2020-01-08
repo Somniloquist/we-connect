@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
   end
 
@@ -23,7 +25,7 @@ class PostsController < ApplicationController
   def update
   end
 
-  def delete
+  def destroy
   end
 
   def edit
