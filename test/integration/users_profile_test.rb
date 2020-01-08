@@ -1,19 +1,21 @@
 require 'test_helper'
 
 class UsersProfileTest < ActionDispatch::IntegrationTest
+  include ActionView::Helpers::TextHelper
 
   def setup
     @user = users(:john)
-    @other_user = users(:jane)
     sign_in(@user)
   end
   
-  test "friend/unfriend button updates when clicked" do
-    get user_path(@other_user)
+  test "profile display's correctly" do
+    get user_path(@user)
     assert_template "users/show"
-    assert_select "form#add-friend-form"
-    post friendships_path, params: { user_id: @other_user.id }
-    get user_path(@other_user)
-    assert_select "form#remove-friend-form"
+    assert_select "h1", text: @user.fullname
+    assert_select "div.profile-image>img.gravatar"
+    assert_match pluralize(@user.friends.count, "friend").to_s, response.body
+    @user.posts.each do |post|
+      assert_match post.body, response.body
+    end
   end
 end

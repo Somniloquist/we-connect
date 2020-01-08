@@ -8,6 +8,15 @@ class UserFriendshipsTest < ActionDispatch::IntegrationTest
     sign_in(@user)
   end
 
+  test "friend/unfriend button updates when clicked" do
+    get user_path(@other_user)
+    assert_template "users/show"
+    assert_select "form#add-friend-form"
+    post friendships_path, params: { user_id: @other_user.id }
+    get user_path(@other_user)
+    assert_select "form#remove-friend-form"
+  end
+  
   test "friend then unfriend a user" do
     # friend another user
     get users_path
