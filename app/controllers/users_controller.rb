@@ -16,4 +16,10 @@ class UsersController < ApplicationController
     @friendships = Friendship.joins(:user).where(user_id: @user, accepted?: true)
     @friend_requests = @user.friend_requests
   end
+
+  def edit
+  end
+
+  def update
+  end
 end

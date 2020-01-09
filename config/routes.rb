@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:index, :show] do
+  resources :users, only: [:index, :show, :edit, :update] do
     member do
       get :friends
     end
