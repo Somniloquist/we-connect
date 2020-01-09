@@ -8,6 +8,7 @@ john:
   encrypted_password: password
   birthday: <%= Time.now %>
   gender: male
+  about: Just a regular john
 
 jane:
   id: 2
@@ -17,4 +18,5 @@ jane:
   encrypted_password: password
   birthday: <%= Time.now %>
   gender: female
+  about: just a regular jane
   

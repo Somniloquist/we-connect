@@ -33,4 +33,14 @@ class UserTest < ActiveSupport::TestCase
     @user.gender = "     "
     assert_not @user.valid?
   end
+
+  test "about should be optional" do
+    @user.about = "       "
+    assert @user.valid?
+  end
+
+  test "about should be 255 characters or less" do
+    @user.about = "a" * 256
+    assert_not @user.valid?
+  end
 end

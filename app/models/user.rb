@@ -13,6 +13,8 @@ class User < ApplicationRecord
   validates :lastname, presence: true
   validates :birthday, presence: true
   validates :gender, presence: true
+  validates :about, length: { maximum: 255 }
+ 
 
   def fullname
     "#{firstname} #{lastname}"
