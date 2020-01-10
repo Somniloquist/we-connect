@@ -3,6 +3,7 @@ require 'test_helper'
 class UsersEditTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:john)
+    @other_user = users(:jane)
     sign_in(@user)
   end
 
@@ -31,5 +32,14 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_equal firstname, @user.firstname
     assert_equal lastname, @user.lastname
     assert_equal about, @user.about
+  end
+
+  test "cannot edit other user profiles" do
+    get edit_user_path(@other_user)
+    assert_redirected_to root_path
+    patch user_path(@other_user), params: { user: { firstname: "invalid",
+                                                    lastname: "profile",
+                                                    about: "you can't do that" } }
+    assert_redirected_to root_path
   end
 end

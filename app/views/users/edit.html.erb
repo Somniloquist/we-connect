@@ -1,1 +1,21 @@
-<h1>Edit</h1>
+<div class="container col-md-6">
+  <h1>Edit</h1>
+  <%= form_with model: @user, method: :patch, local: true do |f| %>
+    <%= render "devise/shared/error_messages", resource: @user %>
+    <div class="form-group">
+      <%= f.label :firstname, class: "sr-only" %>
+      <%= f.text_field :firstname, placeholder: "First name", autofocus: true, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :lastname, class: "sr-only" %>
+      <%= f.text_field :lastname, placeholder: "Last name", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :about, class: "sr-only" %>
+      <%= f.text_area :about, placeholder: "About me", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Update profile", class: "btn btn-primary float-right" %>
+    </div>
+  <% end %>
+</div>
