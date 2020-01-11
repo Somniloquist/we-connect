@@ -14,6 +14,10 @@
       <%= f.label :about, class: "sr-only" %>
       <%= f.text_area :about, placeholder: "About me", class: "form-control" %>
     </div>
+      <div class="form-group">
+      <%= f.label :banner_picture %>
+      <%= f.file_field :banner_picture, class: "form-control" %>
+    </div>
     <div class="form-group">
       <%= f.submit "Update profile", class: "btn btn-primary float-right" %>
     </div>
