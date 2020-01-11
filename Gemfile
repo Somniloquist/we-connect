@@ -36,4 +36,8 @@ group :test do
   gem 'rails-controller-testing'
 end
 
+group :production do
+  gem 'aws-sdk'
+end
+
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
