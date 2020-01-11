@@ -1,5 +1,5 @@
-# We Connect
-A practice facebook clone application.
+# railsbook
+A facebook clone application for practice.
 
 ## Prerequisites
 - ruby 2.6.4
