@@ -36,11 +36,13 @@
 }
 
 // user profile
-#cover-image {
+#banner-picture {
   height: 50vw;
   max-height: 380px;
   min-height: 176px;
   background: #eaeaea;
+  background-size: cover;
+  background-position: center;
 }
 #profile-header {
   margin-top: -25px;

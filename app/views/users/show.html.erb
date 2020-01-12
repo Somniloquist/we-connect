@@ -1,5 +1,7 @@
 <!-- I put the style here so I can set the background image based on user without having to involve javascript -->
-<div id="cover-image" style="background-image: url(<%= url_for(@user.banner_picture)%>);"></div>
+<% unless @user.banner_picture.nil? %>
+<div id="banner-picture" style="background-image: url(<%= url_for(@user.banner_picture) if @user.banner_picture.attached? %>);"></div>
+<% end %>
 <div class="container">
 
   <div class="row">

@@ -23,6 +23,7 @@ end
 
 group :development do
   gem 'faker'
+  gem "aws-sdk-s3", require: false
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
