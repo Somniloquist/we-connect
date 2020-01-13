@@ -15,6 +15,7 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :gender, presence: true
   validates :about, length: { maximum: 255 }
+  validate :file_format
  
 
   def fullname
@@ -60,5 +61,11 @@ class User < ApplicationRecord
   def feed
     Post.where("user_id IN (:friend_ids) OR user_id = :user_id", friend_ids: friend_ids, user_id: id)
   end
+
+  private
+    def file_format
+      errors.add(:banner_picture, "is missing!") unless banner_picture.attached?
+      errors.add(:banner_picture, " - not an image") unless banner_picture.image?
+    end
 
 end
