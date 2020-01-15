@@ -17,13 +17,15 @@ gem 'sprockets-rails', '>= 2.3.2'
 gem 'bootstrap'
 gem 'jquery-rails'
 
+gem "aws-sdk-s3", require: false
+gem 'mini_magick'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do
   gem 'faker'
-  gem "aws-sdk-s3", require: false
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
@@ -37,8 +39,7 @@ group :test do
   gem 'rails-controller-testing'
 end
 
-group :production do
-  gem 'aws-sdk'
-end
+# group :production do
+# end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

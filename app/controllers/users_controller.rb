@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @banner_
     @date_joined = @user.created_at.strftime("%B %Y")
     @posts = @user.posts
     @number_of_friends = Friendship.joins(:user).where(user_id: @user, accepted?: true).count
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    create_thumbnail if @user.banner_picture.attached?
   end
 
   def update
@@ -41,5 +43,16 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user == @user
+    end
+
+    def create_thumbnail
+      # adds a thumbnail variant of the uploaded banner image if it doesn't already exist
+      # https://edgeguides.rubyonrails.org/active_storage_overview.html#transforming-images
+      @banner_thumb = @user.banner_picture.variant(combine_options: {
+        auto_orient: true,
+        gravity: "center",
+        resize: "200^x100",
+        crop: "200x100+0+0"
+      })
     end
 end

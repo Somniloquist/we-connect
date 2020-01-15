@@ -64,8 +64,11 @@ class User < ApplicationRecord
 
   private
     def file_format
-      errors.add(:banner_picture, "is missing!") unless banner_picture.attached?
-      errors.add(:banner_picture, " - not an image") unless banner_picture.image?
+      # banner_picture is nil upon user creation, skip validation
+      return if banner_picture.nil?
+      if banner_picture.attached?
+        errors.add(:banner_picture, " - not an image") unless banner_picture.image? 
+      end
     end
 
 end
