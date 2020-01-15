@@ -11,6 +11,17 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "update then delete a file" do
+    sign_in(@user)
+    file = fixture_file_upload(Rails.root.join("public", "apple-touch-icon.png"), "image/png")
+    assert_difference "ActiveStorage::Attachment.count", 1 do
+      patch user_path(@user), params: { user: { banner_picture: file } }
+    end
+    assert_difference "ActiveStorage::Attachment.count", -1 do
+      delete delete_banner_user_path(@user)
+    end
+  end
+
   test "should redirect edit when not logged in" do
     get edit_user_path(@user)
     assert_not flash.empty?

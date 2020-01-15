@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update] do
     member do
+      delete "/delete_banner", to: "users#delete_banner_picture"
       get :friends
     end
   end

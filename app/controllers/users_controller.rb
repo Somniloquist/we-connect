@@ -35,6 +35,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def delete_banner_picture
+    @user = User.find(params[:id])
+    if @user.banner_picture.attached?
+      # Synchronously destroy the avatar and actual resource files.
+      @user.banner_picture.purge
+      flash[:success] = "Banner successfully removed."
+    end
+    render :edit
+  end
+
   private
     def user_params
       params.require(:user).permit(:firstname, :lastname, :about, :banner_picture)
