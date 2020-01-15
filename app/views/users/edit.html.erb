@@ -18,8 +18,11 @@
         <%= f.label :banner_picture %>
         <%= f.file_field :banner_picture, class: "form-control" %>
         <% if @user.banner_picture.attached? %>
-          <h6>Current banner</h6>
-          <%= image_tag url_for(@banner_thumb) %>
+          <!-- Prevents the broken link icon from showing when the wrong file type is uploaded -->
+          <% if @user.banner_picture.image? %>
+            <h6>Current banner</h6>
+            <%= image_tag url_for(@banner_thumb) %>
+          <% end %>
         <% end %>
       </div>
     <div class="form-group">
