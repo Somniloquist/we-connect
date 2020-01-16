@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :post
   has_many :comments
   has_one_attached :banner_picture
+  has_one_attached :avatar
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -15,7 +16,8 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :gender, presence: true
   validates :about, length: { maximum: 255 }
-  validate :file_format
+  validate :banner_file_format
+  validate :avatar_file_format
  
 
   def fullname
@@ -62,12 +64,29 @@ class User < ApplicationRecord
     Post.where("user_id IN (:friend_ids) OR user_id = :user_id", friend_ids: friend_ids, user_id: id)
   end
 
+  def set_avatar(size)
+    avatar.variant(combine_options: {
+        auto_orient: true,
+        gravity: "center",
+        resize: "#{size}x#{size}^",
+        crop: "#{size}x#{size}+0+0"
+      })
+  end
+
   private
-    def file_format
+    def banner_file_format
       # banner_picture is nil upon user creation, skip validation
       return if banner_picture.nil?
       if banner_picture.attached?
         errors.add(:banner_picture, " - not an image") unless banner_picture.image? 
+      end
+    end
+
+    def avatar_file_format
+      # banner_picture is nil upon user creation, skip validation
+      return if avatar.nil?
+      if avatar.attached?
+        errors.add(:avatar, " - not an image") unless avatar.image? 
       end
     end
 

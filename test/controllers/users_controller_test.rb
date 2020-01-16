@@ -11,7 +11,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "update then delete a file" do
+  test "update/delete attach then remove a banner" do
     sign_in(@user)
     file = fixture_file_upload(Rails.root.join("public", "apple-touch-icon.png"), "image/png")
     assert_difference "ActiveStorage::Attachment.count", 1 do
@@ -19,6 +19,17 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
     assert_difference "ActiveStorage::Attachment.count", -1 do
       delete delete_banner_user_path(@user)
+    end
+  end
+
+  test "update/delete attach then remove a avatar" do
+    sign_in(@user)
+    file = fixture_file_upload(Rails.root.join("public", "apple-touch-icon.png"), "image/png")
+    assert_difference "ActiveStorage::Attachment.count", 1 do
+      patch user_path(@user), params: { user: { avatar: file } }
+    end
+    assert_difference "ActiveStorage::Attachment.count", -1 do
+      delete delete_avatar_user_path(@user)
     end
   end
 

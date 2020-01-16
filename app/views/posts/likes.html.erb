@@ -1,4 +1,4 @@
 <h1>Liked <%= pluralize(@number_of_likes, "time") %>.</h1>
 <% @likes_users.each do |user| %>
-  <%= link_to gravatar_for(user, 30), user_path(user) %>
+  <%= link_to avatar_for(user, 30), user_path(user) %>
 <% end %>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :friendships, only: [:create, :destroy, :update]
   resources :likes, only: [:create, :destroy]
+ 
 
   resources :posts do
     resources :comments, only: [:new, :create, :delete]
@@ -12,8 +13,11 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show, :edit, :update] do
+    get "settings", to: "users#edit"
+    patch "settings", to: "users#update"
     member do
       delete "/delete_banner", to: "users#delete_banner_picture"
+      delete :delete_avatar
       get :friends
     end
   end

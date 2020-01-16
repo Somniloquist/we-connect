@@ -21,18 +21,17 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-    create_thumbnail if @user.banner_picture.attached?
+    @user = User.find(params[:user_id])
+    create_banner_thumbnail if @user.banner_picture.attached?
+    create_avatar_thumbnail if @user.avatar.attached?
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     if @user.update_attributes(user_params)
       flash[:success] = "Update successful."
-      redirect_to @user
-    else
-      render :edit
     end
+    render :edit
   end
 
   def delete_banner_picture
@@ -42,20 +41,39 @@ class UsersController < ApplicationController
       @user.banner_picture.purge
       flash[:success] = "Banner successfully removed."
     end
-    render :edit
+    redirect_to user_settings_path(@user)
+  end
+
+  def delete_avatar
+    @user = User.find(params[:id])
+    if @user.avatar.attached?
+      # Synchronously destroy the avatar and actual resource files.
+      @user.avatar.purge
+      flash[:success] = "Avatar successfully removed."
+    end
+    redirect_to user_settings_path(@user)
   end
 
   private
     def user_params
-      params.require(:user).permit(:firstname, :lastname, :about, :banner_picture)
+      params.require(:user).permit(:firstname, :lastname, :about, :banner_picture, :avatar)
     end
 
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.find(params[:user_id])
       redirect_to(root_path) unless current_user == @user
     end
 
-    def create_thumbnail
+    def create_avatar_thumbnail
+      @avatar_thumb = @user.avatar.variant(combine_options: {
+        auto_orient: true,
+        gravity: "center",
+        resize: "100^x100",
+        crop: "100x100+0+0"
+      })
+    end
+
+    def create_banner_thumbnail
       # adds a thumbnail variant of the uploaded banner image if it doesn't already exist
       # https://edgeguides.rubyonrails.org/active_storage_overview.html#transforming-images
       @banner_thumb = @user.banner_picture.variant(combine_options: {
