@@ -62,14 +62,4 @@ class UsersController < ApplicationController
       redirect_to(root_path) unless current_user == @user
     end
 
-    def create_banner_thumbnail
-      # adds a thumbnail variant of the uploaded banner image if it doesn't already exist
-      # https://edgeguides.rubyonrails.org/active_storage_overview.html#transforming-images
-      @banner_thumb = @user.banner_picture.variant(combine_options: {
-        auto_orient: true,
-        gravity: "center",
-        resize: "200^x100",
-        crop: "200x100+0+0"
-      })
-    end
 end

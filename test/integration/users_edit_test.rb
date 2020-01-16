@@ -8,9 +8,9 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
   test "unsuccessful edit" do
-    get edit_user_path(@user)
+    get user_settings_path(@user)
     assert_template("users/edit")
-    patch user_path(@user), params: { user: { firstname: "",
+    patch user_settings_path(@user), params: { user: { firstname: "",
                                               lastname: " ",
                                               about: "meh" } }
     assert_template "users/edit"
@@ -18,16 +18,15 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
   test "successful edit" do
-    get edit_user_path(@user)
+    get user_settings_path(@user)
     assert_template("users/edit")
     firstname = "Foo"
     lastname = "Bar"
     about = "I am FooBar"
-    patch user_path(@user), params: { user: { firstname: firstname,
+    patch user_settings_path(@user), params: { user: { firstname: firstname,
                                               lastname: lastname,
                                               about: about } }
     assert_not flash.empty?
-    assert_redirected_to @user
     @user.reload
     assert_equal firstname, @user.firstname
     assert_equal lastname, @user.lastname
@@ -35,9 +34,9 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
   test "cannot edit other user profiles" do
-    get edit_user_path(@other_user)
+    get user_settings_path(@other_user)
     assert_redirected_to root_path
-    patch user_path(@other_user), params: { user: { firstname: "invalid",
+    patch user_settings_path(@other_user), params: { user: { firstname: "invalid",
                                                     lastname: "profile",
                                                     about: "you can't do that" } }
     assert_redirected_to root_path

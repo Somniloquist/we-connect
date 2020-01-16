@@ -15,7 +15,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     sign_in(@user)
     file = fixture_file_upload(Rails.root.join("public", "apple-touch-icon.png"), "image/png")
     assert_difference "ActiveStorage::Attachment.count", 1 do
-      patch user_path(@user), params: { user: { banner_picture: file } }
+      patch user_settings_path(@user), params: { user: { banner_picture: file } }
     end
     assert_difference "ActiveStorage::Attachment.count", -1 do
       delete delete_banner_user_path(@user)
@@ -26,7 +26,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     sign_in(@user)
     file = fixture_file_upload(Rails.root.join("public", "apple-touch-icon.png"), "image/png")
     assert_difference "ActiveStorage::Attachment.count", 1 do
-      patch user_path(@user), params: { user: { avatar: file } }
+      patch user_settings_path(@user), params: { user: { avatar: file } }
     end
     assert_difference "ActiveStorage::Attachment.count", -1 do
       delete delete_avatar_user_path(@user)
