@@ -73,6 +73,15 @@ class User < ApplicationRecord
       })
   end
 
+  def set_banner(size)
+    banner_picture.variant(combine_options: {
+        auto_orient: true,
+        gravity: "center",
+        resize: "#{size*2}x#{size}^",
+        crop: "#{size*2}x#{size}+0+0"
+      })
+  end
+
   private
     def banner_file_format
       # banner_picture is nil upon user creation, skip validation

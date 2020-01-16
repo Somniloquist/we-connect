@@ -23,7 +23,7 @@
         <!-- Prevents the broken link icon from showing when the wrong file type is uploaded -->
         <% if @user.avatar.image? %>
           <h6>Current avatar</h6>
-          <%= image_tag url_for(@avatar_thumb) %>
+          <%= avatar_for(@user, 100) %>
           <%= link_to "Remove avatar", delete_avatar_user_path(@user), method: :delete, class: "btn btn-danger" %>
         <% end %>
       <% end %>
@@ -36,7 +36,7 @@
         <!-- Prevents the broken link icon from showing when the wrong file type is uploaded -->
         <% if @user.banner_picture.image? %>
           <h6>Current banner</h6>
-          <%= image_tag url_for(@banner_thumb) %>
+          <%= banner_for(@user, 100) %>
           <%= link_to "Remove banner", delete_banner_user_path(@user), method: :delete, class: "btn btn-danger" %>
         <% end %>
       <% end %>

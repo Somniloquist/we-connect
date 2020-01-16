@@ -22,8 +22,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:user_id])
-    create_banner_thumbnail if @user.banner_picture.attached?
-    create_avatar_thumbnail if @user.avatar.attached?
   end
 
   def update
@@ -62,15 +60,6 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:user_id])
       redirect_to(root_path) unless current_user == @user
-    end
-
-    def create_avatar_thumbnail
-      @avatar_thumb = @user.avatar.variant(combine_options: {
-        auto_orient: true,
-        gravity: "center",
-        resize: "100^x100",
-        crop: "100x100+0+0"
-      })
     end
 
     def create_banner_thumbnail

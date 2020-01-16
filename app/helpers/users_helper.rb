@@ -9,4 +9,11 @@ module UsersHelper
   def avatar_for(user, size=80)
     user.avatar.attached? ? image_tag(url_for(user.set_avatar(size))) : gravatar_for(user, size)
   end
+
+  # creates or loads a variant of height, use to generate 
+  # thumbnails/previews
+  def banner_for(user, height=100)
+    image_tag(url_for(user.set_banner(height)))
+  end
+
 end
