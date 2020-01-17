@@ -34,7 +34,12 @@
   </div>
 
   <div class="container">
-    <%= render @posts %>
+    <!-- Loop through the posts so that I can give each post a seperate background -->
+    <% @posts.each do |post| %>
+      <div class="post-card">
+        <%= render post %>
+      </div>
+    <% end %>
   </div>
 
 </div>

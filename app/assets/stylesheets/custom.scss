@@ -1,5 +1,6 @@
 body {
   background: #fafafa;
+  margin-bottom: 100px;
 }
 
 // FORMS
@@ -155,6 +156,9 @@ body {
   border-left: 1px solid #eaeaea;
 }
 
+.comments-container {
+  margin-top: 25px;
+}
 .comments {
   border-left: 1px solid #eaeaea;
   padding-left: 10px;

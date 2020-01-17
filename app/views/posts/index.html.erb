@@ -3,6 +3,8 @@
   <h1>Latest Posts</h1>
   <%= render "form" %>
   <% @feed.each do |post| %>
-    <%= render post %>
+    <div class="post-card">
+     <%= render post %>
+    </div>
   <% end %>
 </div>
