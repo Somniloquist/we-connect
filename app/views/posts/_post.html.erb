@@ -12,10 +12,12 @@
 
       <% provide(:url, post_comments_path(post)) %>
       <div class="post-content">
-        <% if controller_name == "users" %>
+        <% unless current_page?(controller: "posts", action: "show", id: post.id) %>
           <%= simple_format(truncate(post.body, length: 255)) %>
+          <%= image_for(post, 100) if post.image.attached? %>
         <% else %>
           <%= simple_format(post.body) %>
+          <%= link_to image_for(post, 500), url_for(post.image) if post.image.attached? %>
         <% end %>
       </div>
 

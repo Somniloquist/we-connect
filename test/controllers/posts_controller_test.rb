@@ -3,6 +3,7 @@ require 'test_helper'
 class PostsControllerTest < ActionDispatch::IntegrationTest
 
   def setup
+    @user = users(:john)
     @post = posts(:orange)
   end
 
@@ -47,6 +48,14 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test "likes should require a logged in user" do
     get likes_post_path(@post)
     assert_redirected_to new_user_session_path
+  end
+
+  test "create should upload an file" do
+    sign_in(@user)
+    file = fixture_file_upload(Rails.root.join("public", "apple-touch-icon.png"), "image/png")
+    assert_difference "ActiveStorage::Attachment.count", 1 do
+      post posts_path, params: { post: { body: "test post", image: file } }
+    end
   end
 
 end
