@@ -24,16 +24,6 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   
-  test "birthday should be present" do
-    @user.birthday = "     "
-    assert_not @user.valid?
-  end
-
-  test "gender should be present" do
-    @user.gender = "     "
-    assert_not @user.valid?
-  end
-
   test "about should be optional" do
     @user.about = "       "
     assert @user.valid?

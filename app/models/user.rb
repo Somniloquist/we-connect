@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  devise :omniauthable, omniauth_providers: %i[facebook]
   has_many :posts
   has_many :friendships
   has_many :friends, through: :friendships
@@ -13,8 +14,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :firstname, presence: true
   validates :lastname, presence: true
-  validates :birthday, presence: true
-  validates :gender, presence: true
   validates :about, length: { maximum: 255 }
   validate :banner_file_format
   validate :avatar_file_format
@@ -85,6 +84,20 @@ class User < ApplicationRecord
         resize: "#{size*2}x#{size}^",
         crop: "#{size*2}x#{size}+0+0"
       })
+  end
+
+  def self.from_omniauth(auth)
+    # I want find account by email if it already exists, otherwise create one
+    where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.firstname = auth.info.first_name   # assuming the user model has a name
+      user.lastname = auth.info.last_name
+      # user.avatar = auth.info.image # assuming the user model has an image
+      # If you are using confirmable and the provider(s) you use validate emails, 
+      # uncomment the line below to skip the confirmation emails.
+      # user.skip_confirmation!
+    end
   end
 
   private

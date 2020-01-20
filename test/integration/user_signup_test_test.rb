@@ -15,7 +15,7 @@ class UserSignupTestTest < ActionDispatch::IntegrationTest
                                                           gender: "" } }
     end
     assert_template "devise/registrations/new"
-    assert_select "div#error_explanation>ul>li", 6
+    assert_select "div#error_explanation>ul>li", 4
   end
 
   test "Submitting valid information should create a new user" do
