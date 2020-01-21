@@ -87,12 +87,22 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    # I want find account by email if it already exists, otherwise create one
+    # If account with email already exists, link the user to this provider
+    if existing_user = find_by(email: auth.info.email)
+      existing_user.update_attributes(provider: auth.provider, uid: auth.uid) if existing_user.provider.nil? && existing_user.uid.nil?
+    end
     where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.firstname = auth.info.first_name   # assuming the user model has a name
       user.lastname = auth.info.last_name
+      # attach avatar via activestorage
+      file = open(auth.info.image + "?type=large")
+      user.avatar.attach(
+        io: file,
+        filename: "avatar.jpg",
+        content_type: file.content_type
+      )
       # user.avatar = auth.info.image # assuming the user model has an image
       # If you are using confirmable and the provider(s) you use validate emails, 
       # uncomment the line below to skip the confirmation emails.
