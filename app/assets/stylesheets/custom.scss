@@ -3,7 +3,41 @@ body {
   margin-bottom: 100px;
 }
 
+
 // FORMS
+.form-container {
+  max-width: 388px;
+}
+
+.form-card {
+  background: white;
+  padding: 25px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin-bottom: 15px;
+  border-radius: 0.25rem;
+}
+
+.alert-danger>ul {
+  font-size: 0.91rem;
+  margin-bottom: 0;
+}
+
+
+.btn-facebook {
+  background: #3b5998;
+  color: white;
+  margin-bottom: 16px;
+  &:hover {
+    color: white;
+    background: #314a86;
+  }
+  &:before {
+    font-family: FontAwesome;
+    content: "\f082";
+    margin-right: 10px;
+  }
+}
+
 .form-label {
   color: rgba(0, 0, 0, 0.5);
   margin-bottom: 0;

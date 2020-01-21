@@ -17,6 +17,7 @@ gem 'sprockets-rails', '>= 2.3.2'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'omniauth-facebook'
+gem "font-awesome-rails"
 
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
