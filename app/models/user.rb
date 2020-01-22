@@ -1,11 +1,11 @@
 class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: %i[facebook]
-  has_many :posts
-  has_many :friendships
+  has_many :posts, dependent: :destroy
+  has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_one_attached :banner_picture
   has_one_attached :avatar
   # Include default devise modules. Others available are:
@@ -17,6 +17,7 @@ class User < ApplicationRecord
   validates :about, length: { maximum: 255 }
   validate :banner_file_format
   validate :avatar_file_format
+  after_destroy :destroy_mutual_friendhips
  
 
   def fullname
@@ -103,10 +104,6 @@ class User < ApplicationRecord
         filename: "avatar.jpg",
         content_type: file.content_type
       )
-      # user.avatar = auth.info.image # assuming the user model has an image
-      # If you are using confirmable and the provider(s) you use validate emails, 
-      # uncomment the line below to skip the confirmation emails.
-      # user.skip_confirmation!
     end
   end
 
@@ -125,6 +122,11 @@ class User < ApplicationRecord
       if avatar.attached?
         errors.add(:avatar, " - not an image") unless avatar.image? 
       end
+    end
+
+    def destroy_mutual_friendhips
+      # find and delete the other side of the friendships missed by dependend: :destroy
+      Friendship.delete(Friendship.where(friend_id: self))
     end
 
 end

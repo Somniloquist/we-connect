@@ -1,0 +1,13 @@
+a_comment:
+  user_id: 1
+  commentable_type: "Post"
+  commentable_id: apple
+  body: "this is a comment"
+  created_at: <%= 5.minutes.ago %>
+
+another_comment:
+  user_id: 2
+  commentable_type: "Comment"
+  commentable_id: a_comment
+  body: "wow another comment"
+  created_at: <%= Time.now %>

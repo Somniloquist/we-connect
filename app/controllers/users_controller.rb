@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @message = "Are you sure you want to delete this account? This action cannot be reversed."
     @user = User.find(params[:user_id])
   end
 

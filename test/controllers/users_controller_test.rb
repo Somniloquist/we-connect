@@ -4,6 +4,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:john)
+    @other_user = users(:jane)
+    @user.add_friend(@other_user)
   end
 
   test "should get new" do
@@ -51,4 +53,5 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get users_path
     assert_redirected_to new_user_session_path
   end
+
 end

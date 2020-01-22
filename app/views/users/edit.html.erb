@@ -46,4 +46,6 @@
       <%= f.submit "Update profile", class: "btn btn-primary float-right" %>
     </div>
   <% end %>
+
+  <%= link_to "Delete account", user_registration_path, method: :delete, data: { confirm: @message }, class: "btn btn-danger float-right mr-3" %>
 </div>
