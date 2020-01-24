@@ -13,7 +13,7 @@
 
     <%= render "layouts/header" %>
 
-    <div class="container-fluid flash-container">
+    <div id="flash" class="container-fluid flash-container">
       <div class="row">
         <% flash.each do |key, value| %>
           <%= content_tag :div, value, class: "flash alert alert-#{key} text-center" %>
