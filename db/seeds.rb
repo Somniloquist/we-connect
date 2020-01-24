@@ -6,25 +6,37 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-  User.create!(firstname: "Robin",
-              lastname: "Unger",
-              email: "robin.e.unger@gmail.com",
-              password: "password",
-              birthday: Time.now,
-              gender: "male")
+User.create!(firstname: "Test",
+            lastname: "User",
+            email: "test@example.com",
+            password: "password",
+            birthday: Time.now)
 
-10.times do |i|
-  User.create!(firstname: "Test",
-              lastname: "User-#{i}",
-              email: "testuser#{i}@example.com",
+99.times do |i|
+  User.create!(firstname: Faker::Name.first_name,
+              lastname: Faker::Name.last_name,
+              email: "example#{i}@example.com",
               password: "password",
-              birthday: Time.now,
-              gender: "male")
+              gender: Faker::Gender.binary_type)
 end
 
-User.all.each do |user|
-  5.times do |i|
-    user.posts.build(body: Faker::Lorem.paragraph).save
-  end
-  user.posts.build(body: Faker::Lorem.paragraph(sentence_count: 50)).save
+User.create!(firstname: "Robin",
+            lastname: "Unger",
+            email: "robin.e.unger@gmail.com",
+            password: "password",
+            birthday: Time.now)
+
+
+
+
+users = User.order(:created_at).take(10)
+50.times do
+  content = Faker::Lorem.paragraph
+  users.each { |user| user.posts.create!(body: content) }
 end
+
+users = User.all
+user = users.last
+
+users[1..10].each { |friend| user.add_friend(friend) }
+Friendship.all.each { |friendship| friendship.accept }
