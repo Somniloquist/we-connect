@@ -55,10 +55,15 @@ body {
   }
 }
 
+.flash-container {
+  .alert {
+    margin: 0;
+  }
+}
+
 .flash {
   float: left;
   width: 100%;
-  margin-top: 10px;
 }
 
 // devise alert
