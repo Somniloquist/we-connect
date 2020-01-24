@@ -1,6 +1,26 @@
+// GENERAL
 body {
   background: #fafafa;
   margin-bottom: 100px;
+}
+
+.container {
+  // extra space for flash message
+  padding-top: 2.5rem;
+}
+
+.no-link-underline {
+  &:hover {
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.m-neg-15 {
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
 
@@ -55,10 +75,19 @@ body {
   }
 }
 
+.flash-container {
+  position: absolute;
+  right: 0;
+  left: 0;
+  .alert {
+    margin: 0;
+    padding: 0.25rem 1.25rem;
+  }
+}
+
 .flash {
   float: left;
   width: 100%;
-  margin-top: 10px;
 }
 
 // devise alert
@@ -181,21 +210,6 @@ body {
   .next_page {
     margin-left: 10px;
   }
-}
-
-// misc
-.no-link-underline {
-  &:hover {
-    text-decoration: none;
-  }
-  &:focus {
-    text-decoration: none;
-  }
-}
-
-.m-neg-15 {
-  margin-left: -15px;
-  margin-right: -15px;
 }
 
 // comments
