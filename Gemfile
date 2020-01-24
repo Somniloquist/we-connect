@@ -18,6 +18,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'omniauth-facebook'
 gem "font-awesome-rails"
+gem "will_paginate", "~> 3.1.0"
 
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'

@@ -170,6 +170,19 @@ body {
   font-size: 0.8rem;
 }
 
+.pagination {
+  margin: 25px 0 25px 0;
+  a, .current {
+  margin-right: 5px;
+  }
+  .previous_page {
+    margin-right: 10px;
+  }
+  .next_page {
+    margin-left: 10px;
+  }
+}
+
 // misc
 .no-link-underline {
   &:hover {

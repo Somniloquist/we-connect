@@ -2,9 +2,10 @@
 <div class="container">
   <h1>Latest Posts</h1>
   <%= render "form" %>
-  <% @feed.each do |post| %>
+  <% @posts.each do |post| %>
     <div class="post-card">
      <%= render post %>
     </div>
   <% end %>
+  <%= will_paginate @posts %>
 </div>

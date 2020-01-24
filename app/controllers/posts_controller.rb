@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @feed = current_user.feed
+    @posts = current_user.feed.paginate(page: params[:page], per_page: 20)
   end
 
   def show
