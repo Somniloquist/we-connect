@@ -4,11 +4,6 @@ body {
   margin-bottom: 100px;
 }
 
-.container {
-  // extra space for flash message
-  padding-top: 2.5rem;
-}
-
 .no-link-underline {
   &:hover {
     text-decoration: none;
@@ -21,6 +16,9 @@ body {
 .m-neg-15 {
   margin-left: -15px;
   margin-right: -15px;
+}
+.mt-25 {
+  margin-top: 2.5rem;
 }
 
 
@@ -129,7 +127,7 @@ body {
 }
 #profile-info {
   margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   ul {
     a {
       color: #999;

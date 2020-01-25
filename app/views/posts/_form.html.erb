@@ -1,19 +1,21 @@
-<div class="row">
-    <%= form_with model: @post, scope: :post, url: posts_path, id: "post-form", class: "full-width-form w-100" do |f| %>
+<div class="container">
+  <div class="row">
+      <%= form_with model: @post, scope: :post, url: posts_path, id: "post-form", class: "full-width-form w-100" do |f| %>
 
-      <div class="form-group">
-        <%= f.label :body, class: "sr-only" %>
-        <%= f.text_area :body, placeholder: "Share your thoughts" %>
-      </div>
+        <div class="form-group">
+          <%= f.label :body, class: "sr-only" %>
+          <%= f.text_area :body, placeholder: "Share your thoughts" %>
+        </div>
 
-       <div class="form-group">
-        <%= f.label :image, "Upload an image" %>
-        <%= f.file_field :image, class: "form-control" %>
-      </div>
+        <div class="form-group">
+          <%= f.label :image, "Upload an image" %>
+          <%= f.file_field :image, class: "form-control" %>
+        </div>
 
-      <div class="form-group">
-        <%= f.submit "Post", class: "btn btn-primary float-right" %>
-      </div>
+        <div class="form-group">
+          <%= f.submit "Post", class: "btn btn-primary float-right" %>
+        </div>
 
-    <% end %>
+      <% end %>
+  </div>
 </div>
