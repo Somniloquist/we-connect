@@ -16,7 +16,9 @@
           <%= image_for(post, 100, true) if post.image.attached? %>
         <% else %>
           <%= simple_format(post.body) %>
-          <%= link_to image_for(post, 500), url_for(post.image) if post.image.attached? %>
+          <div class="text-center">
+            <%= link_to image_for(post, 500), url_for(post.image) if post.image.attached? %>
+          </div>
         <% end %>
       </div>
 
