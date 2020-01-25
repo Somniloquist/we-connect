@@ -204,6 +204,16 @@ body {
   font-size: 0.8rem;
 }
 
+.truncate {
+  overflow: hidden;
+  margin: 0;
+}
+
+
+.lines-3 {
+  height: 3.2rem;
+}
+
 .pagination {
   margin: 25px 0 25px 0;
   a, .current {

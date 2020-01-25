@@ -12,7 +12,7 @@
       <% provide(:url, post_comments_path(post)) %>
       <div class="post-content">
         <% unless current_page?(controller: "posts", action: "show", id: post.id) %>
-          <%= simple_format(truncate(post.body, length: 255)) %>
+          <%= simple_format(post.body, length: 255, class: "truncate lines-3") %>
           <%= image_for(post, 100, true) if post.image.attached? %>
         <% else %>
           <%= simple_format(post.body) %>
