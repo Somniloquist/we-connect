@@ -1,7 +1,7 @@
-<div id="friend_request_form-<%= @friendship.id %>">
-  <% if @friendship.accepted? %>
+<div id="friend_request_form-<%= @user.id %>">
+  <% if @user.friendships.first.accepted? %>
     <div class="btn btn-success">Accepted</div>
   <% else %>
-    <%= render "accept_friend_request" %>
+    <%= render "users/accept_friend_request" %>
   <% end %>
 </div>

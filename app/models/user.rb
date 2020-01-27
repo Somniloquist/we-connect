@@ -30,11 +30,6 @@ class User < ApplicationRecord
     other_user.friendships.build(friend_id: id, requested_by_id: id).save
   end
 
-  def remove_friend(other_user)
-    friends.delete(other_user)
-    other_user.friends.delete(self)
-  end
-
   def friends_with?(other_user)
     self.friends.where(id: other_user.id).empty? ? false : true
   end
@@ -58,6 +53,20 @@ class User < ApplicationRecord
 
   def has_pending_friend_requests?
     friend_requests.count > 0
+  end
+
+  # get friends that have accepted friend requests (including associated friendships)
+  def mutual_friends
+    User.includes(:friendships).where("friendships.friend_id = :user_id AND friendships.\"accepted?\" = :accepted",
+                                       user_id: id, accepted: true).references(:friendships)
+  end
+
+  # get friends that have not accepted friend requests (including associated friendships)
+  def pending_friends
+    User.includes(:friendships).where("friendships.friend_id = :user_id AND friendships.\"accepted?\" = :accepted",
+                                       user_id: id, accepted: false)
+                               .where.not("friendships.requested_by_id = :user_id", user_id: id)
+                               .references(:friendships)
   end
 
   # get an array of users who have accepted friend requests

@@ -11,8 +11,10 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @user = Friendship.find(params[:id]).friend
-    current_user.remove_friend(@user)
+    @friendship = Friendship.find(params[:id])
+    # form still requires the user id
+    @user = User.find(@friendship.user_id)
+    @friendship.unfriend
     respond_to do |format|
       format.html { redirect_back fallback_location: friends_user_path(@user) }
       format.js
@@ -20,7 +22,8 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    @friendship = Friendship.find(params[:friendship_id])
+    @friendship = Friendship.find(params[:id])
+    @user = User.find(@friendship.user.id)
     @friendship.accept
     respond_to do |format|
       format.html { redirect_to friends_user_path(current_user)}

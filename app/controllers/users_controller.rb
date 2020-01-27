@@ -15,8 +15,8 @@ class UsersController < ApplicationController
 
   def friends
     @user = User.find(params[:id])
-    @friendships = Friendship.joins(:user).where(user_id: @user, accepted?: true)
-    @friend_requests = @user.friend_requests
+    @friends = @user.mutual_friends
+    @pending_friends = @user.pending_friends
   end
 
   def edit

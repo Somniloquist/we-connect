@@ -1,18 +1,19 @@
 <div class="container col-lg-6 mt-25">
+
   <%= render "friend_requests" if current_user == @user %>  
 
   <h1>Friends</h1>
-  <% @friendships.each do |friendship| %>
+  <% @friends.each do |friend| %>
     <div class="row friend-card">
       <div class="col-3 col-sm-2"> 
-        <div><%= link_to avatar_for(friendship.friend, 50), user_path(friendship.friend) %></div>
+        <div><%= link_to avatar_for(friend, 50), user_path(friend) %></div>
       </div>
       <div class="col-7">
-        <div><%= link_to "#{friendship.friend.fullname}", user_path(friendship.friend) %></div>
-        <div><%= friendship.friend.email %></div>
+        <div><%= link_to "#{friend.fullname}", user_path(friend) %></div>
+        <div><%= friend.email %></div>
       </div>
       <div class="col-2">
-        <%= render partial: "friend_form", locals: { :@user => friendship.friend } unless friendship.friend == current_user %>
+        <%= render partial: "friend_form", locals: { :@user => friend } unless current_user == friend %>
       </div>
     </div>
   <% end %>

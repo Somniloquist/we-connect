@@ -7,4 +7,10 @@ class Friendship < ApplicationRecord
     self.update_attribute(:accepted?, true)
     mutual_friendship.update_attribute(:accepted?, true)
   end
+
+  def unfriend
+    # delete the mutual friendship then delele self
+    Friendship.delete(Friendship.where(user_id: friend_id, friend_id: user_id))
+    Friendship.delete(Friendship.where(user_id: user_id, friend_id: friend_id))
+  end
 end
