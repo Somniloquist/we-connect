@@ -1,5 +1,5 @@
 <% provide(:url, comment_comments_path(@commentable)) %>
-<div class="container">
+<div class="container mt-25">
   <% if controller_name == "comments" %>
     <%= link_to "<< Go back to post", post_path(@commentable.parent_post), class: "btn btn-link" %>
     <%= render @commentable %>
