@@ -1,7 +1,11 @@
 <div id="friend_request_form-<%= @user.id %>">
-  <% if @user.friendships.first.accepted? %>
+  <!-- If friendship is nil then the friendship has been declined -->
+  <% if !@user.friendships.first %>
+    <div class="btn btn-secondary">Declined</div>
+  <% elsif @user.friendships.first.accepted? %>
     <div class="btn btn-success">Accepted</div>
   <% else %>
     <%= render "users/accept_friend_request" %>
+    <%= render "users/decline_friend_request" %>
   <% end %>
 </div>
