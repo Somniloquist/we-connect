@@ -1,3 +1,18 @@
 <%= form_with url: friendship_path(@user.friendships.first), method: :delete, id: "remove-friend-form" do |f| %>
-  <%= f.submit "- Friend", class: "btn btn-danger" %>
+  <!-- @user.friendships only contain 1 record due to where query -->
+  <!-- show 'cancel request' button if current user sent the friend request and it has not yet been accepted -->
+  <% if !@user.friendships.first.accepted? && @user.friendships.first.requested_by_id == current_user.id  %>
+    <%= f.submit "Cancel friend request", class: "btn btn-outline-secondary" %>
+  <!-- show 'decline request' button if currentuser did not send the request -->
+  <% elsif !@user.friendships.first.accepted? %>
+    <%= f.submit "Decline friend request", class: "btn btn-outline-secondary" %>
+  <!-- show 'remove friend button if the friends request was accepted -->
+  <% else %>
+
+    <%= button_tag type: 'submit', class: "btn btn-primary btn-unfriend", id: "register-button" do %>
+      <!-- css target span to set button text on hover, probably breaking some kinda html/css rule with this method -->
+      <span></span>
+    <% end %>
+
+  <% end %>
 <% end %> 
