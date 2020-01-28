@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-  devise :omniauthable, omniauth_providers: %i[facebook]
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :registerable, :confirmable,
+         :omniauthable, omniauth_providers: %i[facebook]
   has_many :posts, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
@@ -8,10 +11,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :banner_picture
   has_one_attached :avatar
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :about, length: { maximum: 255 }
