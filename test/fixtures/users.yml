@@ -9,6 +9,7 @@ john:
   birthday: <%= Time.now %>
   gender: male
   about: Just a regular john
+  confirmed_at: <%= Time.now %>
 
 jane:
   id: 2
@@ -19,4 +20,5 @@ jane:
   birthday: <%= Time.now %>
   gender: female
   about: just a regular jane
+  confirmed_at: <%= Time.now %>
   
