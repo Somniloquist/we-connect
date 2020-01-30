@@ -32,13 +32,22 @@ end
 users = User.all
 user = users.last
 
-users[0...10].each { |friend| user.add_friend(friend) }
+users[0...5].each { |friend| user.add_friend(friend) }
 
-users[0...10].each do |user|
-  file = open("https://robohash.org/#{user.lastname}")
+# upload some banners and avatars
+# placeholder avatars from https://pravatar.cc/
+# banner images from https://picsum.photos/
+users[0...10].each_with_index do |user, index|
+  file = open("https://i.pravatar.cc/150?img=#{index}")
   user.avatar.attach(
     io: file,
     filename: "avatar.png",
+    content_type: file.content_type
+  )
+  file = open("https://picsum.photos/seed/#{index}/1200/600")
+  user.banner_picture.attach(
+    io: file,
+    filename: "banner.png",
     content_type: file.content_type
   )
 end
