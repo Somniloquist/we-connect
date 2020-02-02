@@ -4,6 +4,12 @@ A facebook clone applicationm final project of [The Odin Project](https://www.th
 ## Try it out on Heroku
 [Try the live version on Heroku here.](https://railsbook-00001.herokuapp.com/)
 
+User the test user account below to login if you wish to skip the signup process
+```
+email: testuser@example.com
+password: password
+```
+
 ## Installation
 ### Prerequisites
 - ruby 2.6.4
