@@ -20,6 +20,7 @@ gem 'omniauth-facebook'
 gem "font-awesome-rails"
 gem "will_paginate", "~> 3.1.0"
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
+gem 'faker'
 
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
@@ -31,7 +32,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'faker'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
