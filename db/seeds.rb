@@ -10,7 +10,7 @@
   User.create!(firstname: Faker::Name.first_name,
               lastname: Faker::Name.last_name,
               email: "test#{i+1}@example.com",
-              password: "password",
+              password: Devise.friendly_token[0, 20],
               gender: Faker::Gender.binary_type,
               about: Faker::Quote.famous_last_words)
 end
@@ -18,9 +18,16 @@ end
 User.create!(firstname: "Robin",
             lastname: "Unger",
             email: "robin.e.unger@gmail.com",
-            password: "password",
+            password: Devise.friendly_token[0, 20],
             birthday: Time.now,
             about: "Developer")
+
+# create a test user so people viewing the site can skip the sign up process
+User.create!(firstname: "Test",
+            lastname: "User",
+            email: "testuser@example.com",
+            password: "password",
+            birthday: Time.now)
 
 User.update_all confirmed_at: DateTime.now
 
@@ -33,6 +40,8 @@ users = User.all
 user = users.last
 
 users[0...5].each { |friend| user.add_friend(friend) }
+Friendship.all.each { |friendship| friendship.accept }
+users[6...11].each { |friend| friend.add_friend(user) }
 
 # upload some banners and avatars
 # placeholder avatars from https://pravatar.cc/
@@ -52,4 +61,3 @@ users[0...10].each_with_index do |user, index|
   )
 end
 
-Friendship.all.each { |friendship| friendship.accept }
