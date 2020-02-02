@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'omniauth-facebook'
 gem "font-awesome-rails"
 gem "will_paginate", "~> 3.1.0"
+gem 'omniauth-rails_csrf_protection', '~> 0.1'
 
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
@@ -44,8 +45,5 @@ group :test do
   gem 'chromedriver-helper'
   gem 'rails-controller-testing'
 end
-
-# group :production do
-# end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
