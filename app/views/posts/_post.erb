@@ -37,12 +37,14 @@
 
     <!-- display the preview image to the right of the post preview -->
     <% unless current_page?(controller: "posts", action: "show", id: post.id) %>
-    <!-- container div with same dimensions as image prevents image from loaded in 'squished' -->
-    <div class="image-thumbnail">
-      <%= link_to post_path(post) do %>
-       <%= image_for(post, 100, true, "image-thumbnail") if post.image.attached? %>
+      <!-- container div with same dimensions as image prevents image from loaded in 'squished' -->
+      <% if post.image.attached? %>
+        <div class="image-thumbnail">
+          <%= link_to post_path(post) do %>
+          <%= image_for(post, 100, true, "image-thumbnail") %>
+          <% end %>
+        </div>
       <% end %>
-    </div>
     <% end %>
   </div>  
   
