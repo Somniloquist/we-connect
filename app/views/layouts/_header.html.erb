@@ -11,19 +11,29 @@
             <%= link_to pluralize(current_user.friend_requests.count, "friend request"), friends_user_path(current_user), class: "nav-link"%>
           </li>
         <% end %>
-        <li><%= link_to "All users", users_path, class: "nav-link" %></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= avatar_for(current_user, 30) %> <%= current_user.fullname %>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to "Home", root_path, class: "dropdown-item" %>
-            <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
-            <div class="dropdown-divider"></div>
-            <%= link_to "User settings", user_settings_path(current_user), class: "dropdown-item" %>
-            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
+        <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
+        <li><%= link_to "Find friends", users_path, class: "nav-link" %></li>
+        <li class="nav-item">
+          <%= link_to user_path(current_user), class: "nav-link" do %>
+            <%= avatar_for(current_user, 26) %> <%= current_user.fullname %>
+          <% end %>
         </li>
+
+        <div class="nav-divider"></div>
+        <div class="dropdown-divider"></div>
+
+          
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+            <svg id="signout-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+              <path d="M0 0h24v24H0z" fill="none"/>
+              <path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+            </svg>
+            Sign out
+          <% end %>
+        </li>
+
+       
       </ul>
     <% else %>
       <%= link_to "Log in", new_user_session_path, class: "btn btn-outline-light" %>

@@ -24,6 +24,32 @@ body {
   margin-top: 2.5rem;
 }
 
+// NAVBAR
+#signout-icon {
+  fill: #fff;
+  opacity: 0.5;
+}
+.nav-link {
+  &:hover {
+    #signout-icon {
+      opacity: 0.75;
+    }
+  }
+}
+.nav-divider {
+  display: none;
+}
+@include media-breakpoint-up(lg) {
+  .nav-divider {
+    display: block;
+    width: 1px;
+    background: rgba(255,255,255,0.15);
+    margin: 0 8px;
+  }
+}
+.dropdown-divider {
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
 
 // FORMS
 .form-container {
@@ -129,6 +155,7 @@ body {
 }
 
 // user profile
+
 .avatar {
  border-radius: 100px;
  border: 2px solid white;
@@ -139,6 +166,7 @@ body {
   height: 50vw;
   max-height: 380px;
   min-height: 176px;
+  position: relative;
 }
 .banner-picture {
   background: #eaeaea;

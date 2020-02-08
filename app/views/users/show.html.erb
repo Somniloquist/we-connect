@@ -1,10 +1,12 @@
 <!-- I put the style here so I can set the background image based on user without having to involve javascript -->
 
 <% if @user.banner_picture.attached? %>
-  <div id="banner" class="banner-picture" style="background-image: url(<%= url_for(@user.banner_picture) %>);"></div>
+  <div id="banner" class="banner-picture" style="background-image: url(<%= url_for(@user.banner_picture) %>);">
 <% else %>
-  <div id="banner" class="banner-default"></div>
+  <div id="banner" class="banner-default">
 <% end %>
+</div>
+
 
 <div class="container">
 
@@ -23,6 +25,7 @@
               <% unless @user.about.empty? %>
                 <li class = "user-bio"><%= @user.about %></li>
               <% end %>
+              <%= link_to "Edit profile", user_settings_path(current_user), class: "btn btn-secondary", id: "edit-profile" %>
               <% unless @user == current_user %>
                 <%= render "friend_form" %>
               <% end %>
