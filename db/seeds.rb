@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 99.times do |i|
-  User.create!(firstname: Faker::Name.first_name,
+  User.create(firstname: Faker::Name.first_name,
               lastname: Faker::Name.last_name,
               email: "test#{i+1}@example.com",
               password: Devise.friendly_token[0, 20],
@@ -15,7 +15,7 @@
               about: Faker::Quote.famous_last_words)
 end
 
-User.create!(firstname: "Robin",
+User.create(firstname: "Robin",
             lastname: "Unger",
             email: "robin.e.unger@gmail.com",
             password: Devise.friendly_token[0, 20],
