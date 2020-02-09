@@ -5,15 +5,19 @@
   <h1>Friends</h1>
   <% @friends.each do |friend| %>
     <div class="row friend-card">
-      <div class="col-3 col-sm-2"> 
-        <div><%= link_to avatar_for(friend, 50), user_path(friend) %></div>
-      </div>
-      <div class="col-7">
-        <div><%= link_to "#{friend.fullname}", user_path(friend) %></div>
-        <div><%= friend.email %></div>
-      </div>
-      <div class="col-2">
-        <%= render partial: "friend_form", locals: { :@user => friend } unless current_user == friend %>
+      <div class="col">
+        <div>
+          <%= link_to avatar_for(friend, 50), user_path(friend) %>
+        </div>
+        <div class="friend-card-body">
+          <div class="user-info">
+            <%= link_to "#{friend.fullname}", user_path(friend) %>
+            <%= friend.about %>
+          </div>
+          <div>
+            <%= render partial: "friend_form", locals: { :@user => friend } unless current_user == friend %>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>
