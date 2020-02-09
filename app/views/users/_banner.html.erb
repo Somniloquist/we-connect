@@ -1,0 +1,8 @@
+
+<% if @user.banner_picture.attached? %>
+  <div id="banner" class="banner-picture" style="background-image: url(<%= url_for(@user.banner_picture) %>);">
+<% else %>
+  <div id="banner" class="banner-default">
+<% end %>
+</div>
+

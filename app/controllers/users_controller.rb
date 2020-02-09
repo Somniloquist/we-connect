@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @date_joined = @user.created_at.strftime("%B %Y")
     @posts = @user.posts.paginate(page: params[:page], per_page: 20)
     @number_of_friends = Friendship.joins(:user).where(user_id: @user, accepted?: true).count
   end

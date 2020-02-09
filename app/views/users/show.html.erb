@@ -1,45 +1,31 @@
 <!-- I put the style here so I can set the background image based on user without having to involve javascript -->
-
-<% if @user.banner_picture.attached? %>
-  <div id="banner" class="banner-picture" style="background-image: url(<%= url_for(@user.banner_picture) %>);">
-<% else %>
-  <div id="banner" class="banner-default">
-<% end %>
-</div>
-
+<%= render "banner" %>
 
 <div class="container">
   <div class="row">
-    <div class="col">
-      <div id="profile-header">
-        <div><%= avatar_for @user, 120 %></div>
-
-        <div id="profile-content-wrapper">
-          <div id="profile-info">
-            <h1><%= "#{@user.fullname}" %></h1>
-            <ul class="list-inline">
-              <li class="list-inline-item"><%= link_to pluralize(@number_of_friends, 'friend'), friends_user_path(@user) %></li>
-              <li class="list-inline-item">Joined <%= @date_joined %></li>
-            </ul>
-            <% unless @user.about.empty? %>
-                <p class = "user-bio"><%= @user.about %></p>
-              <% end %>
-          </div>
-          <div id="profile-controls">
-            <% if @user == current_user %>
-                <%= link_to "Edit profile", user_settings_path(current_user), class: "btn btn-outline-secondary", id: "edit-profile" %>
-              <% else %>
-                <%= render "friend_form" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+    <div class="col-12">
+      <%= render "profile_header" %>
     </div>
   </div>
 
+  <% if @user == current_user %>
+    <div class="row">
+      <div class="col-12">
+        <%= render "posts/form" %>
+      </div>
+    </div>
+  <% end %>
+
   <div class="users-posts container">
-    <h2>Latest posts</h2>
-    <!-- Loop through the posts so that I can give each post a seperate background -->
+    <% if @posts.empty? %>
+      <% if @user == current_user %>
+        <p class="no-posts text-center">You haven't posted anything yet.</p>
+      <% else %>
+        <p class="no-posts text-center"><%= @user.firstname %> has not posted anything yet.</p>
+      <% end %>
+    <% end %>
+    <!-- Loop through the posts instead of calling render @posts
+          so that I can give each post a seperate background -->
     <% @posts.each do |post| %>
       <div class="post-card">
         <%= render post %>

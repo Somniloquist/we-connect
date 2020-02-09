@@ -115,6 +115,10 @@ class User < ApplicationRecord
     end
   end
 
+  def date_joined
+    created_at.strftime("%B %Y")
+  end
+
   private
     def banner_file_format
       # banner_picture is nil upon user creation, skip validation

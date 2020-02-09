@@ -1,0 +1,23 @@
+      <div id="profile-header">
+        <div id="profile-avatar"><%= avatar_for @user, 120 %></div>
+
+        <div id="profile-content-wrapper">
+          <div id="profile-info">
+            <h1><%= "#{@user.fullname}" %></h1>
+            <ul class="list-inline">
+              <li class="list-inline-item"><%= link_to pluralize(@number_of_friends, 'friend'), friends_user_path(@user) %></li>
+              <li class="list-inline-item">Joined <%= @user.date_joined %></li>
+            </ul>
+            <% unless @user.about.empty? %>
+                <p class = "user-bio"><%= @user.about %></p>
+              <% end %>
+          </div>
+          <div id="profile-controls">
+            <% if @user == current_user %>
+                <%= link_to "Edit profile", user_settings_path(current_user), class: "btn btn-outline-secondary", id: "edit-profile" %>
+              <% else %>
+                <%= render "friend_form" %>
+            <% end %>
+          </div>
+        </div>
+      </div>

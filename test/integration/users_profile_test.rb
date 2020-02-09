@@ -12,7 +12,7 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     get user_path(@user)
     assert_template "users/show"
     assert_select "h1", text: @user.fullname
-    assert_select "div.profile-image>img.gravatar"
+    assert_select "div#profile-avatar>img.avatar"
     assert_match pluralize(@user.friends.count, "friend").to_s, response.body
     @user.posts.each do |post|
       assert_match post.body, response.body
