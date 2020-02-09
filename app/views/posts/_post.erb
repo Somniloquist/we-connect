@@ -26,13 +26,13 @@
         </div>
       <% end %>
 
-      <div class="post-controls post-info">
-          <%= link_to pluralize(post.comments_count, "comment"), post_path(post), class: "post-link" %>
-          <%= render partial: "likes/form", locals: { :@post => post } %>
-          <div id="likes-<%= post.id %>">
-            <%= link_to pluralize(post.likes.count, "like"), likes_post_path(post), class: "post-link" %>
-          </div>
-        </div>
+      <ul class="post-controls post-info">
+        <li><%= link_to pluralize(post.comments_count, "comment"), post_path(post), class: "post-link" %></li>
+        <li><%= render partial: "likes/form", locals: { :@post => post } %></li>
+        <li id="likes-<%= post.id %>">
+          <%= link_to pluralize(post.likes.count, "like"), likes_post_path(post), class: "post-link" %>
+        </li>
+      </ul>
     </div>
 
     <!-- display the preview image to the right of the post preview -->

@@ -362,7 +362,33 @@ body {
 .post-controls {
   display: flex;
   position: absolute;
+  align-items: center;
   bottom: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    margin-right: 16px;
+  }
+}
+#likes {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+}
+.btn-like {
+  border: none;
+  background: transparent;
+  fill: #999;
+  scale: 0.8;
+  padding: 0;
+}
+.btn-liked {
+  border: none;
+  background: transparent;
+  fill: #EC407A;
+  scale: 0.75;
+  padding: 0;
 }
 
 .truncate {
