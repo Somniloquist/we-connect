@@ -54,6 +54,15 @@ body {
   opacity: 0.5;
 }
 .nav-link {
+  svg {
+    fill: #fff;
+    opacity: 0.5;
+  }
+  &:hover {
+    svg {
+      opacity: 0.75;
+    }
+  }
   &:hover {
     #signout-icon {
       opacity: 0.75;
