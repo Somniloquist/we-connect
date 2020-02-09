@@ -2,10 +2,10 @@
   <!-- @user.friendships only contain 1 record due to where query -->
   <!-- show 'cancel request' button if current user sent the friend request and it has not yet been accepted -->
   <% if !@user.friendships.first.accepted? && @user.friendships.first.requested_by_id == current_user.id  %>
-    <%= f.submit "Cancel friend request", class: "btn btn-outline-secondary" %>
+    <%= f.submit "Cancel request", class: "btn btn-outline-secondary" %>
   <!-- show 'decline request' button if currentuser did not send the request -->
   <% elsif !@user.friendships.first.accepted? %>
-    <%= f.submit "Decline friend request", class: "btn btn-outline-secondary" %>
+    <%= f.submit "Decline request", class: "btn btn-outline-secondary" %>
   <!-- show 'remove friend button if the friends request was accepted -->
   <% else %>
 

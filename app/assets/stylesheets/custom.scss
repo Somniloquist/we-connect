@@ -292,6 +292,38 @@ body {
   padding-bottom: 10px;
   padding-left: 0;
   border-bottom: 1px solid #eaeaea;
+  .avatar {
+    margin-right: 8px;
+  }
+  .col {
+    display: flex;
+    flex-direction: row;
+  }
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    margin-right: 8px;
+    @include media-breakpoint-up(sm) { 
+    }
+  }
+  .friend-card-body {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    margin-right: 8px;
+    @include media-breakpoint-up(sm) {
+      flex-direction: row;
+    }
+  }
+  .btn {
+    width: 100%;
+    margin-top: 8px;
+    @include media-breakpoint-up(sm) {
+      min-width: 135px;
+      margin: 0;
+    }
+  }
 }
 
 // posts
