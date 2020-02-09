@@ -48,6 +48,14 @@ body {
   margin-top: 2.5rem;
 }
 
+// override bootstraps flex-start on navbar-expand-lg
+// need this to keep the login button on the right
+@include media-breakpoint-up(lg) { 
+  .justify-content-between-lg {
+    justify-content: space-between;
+  }
+ }
+
 // NAVBAR
 #signout-icon {
   fill: #fff;
