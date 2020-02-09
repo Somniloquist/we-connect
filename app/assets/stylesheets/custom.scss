@@ -24,7 +24,7 @@ html {
 
 // GENERAL
 html { 
-  min-width: 320px;
+  min-width: 330px;
 }
 body {
   background: #fafafa;
@@ -325,7 +325,10 @@ body {
   display: flex;
   @media (max-width: 575.5px) {
     .author-avatar {
-      display: none;
+      img {
+        width: 45px;
+        height: 45px;
+      }
     }
   }
   .image-thumbnail {
@@ -436,6 +439,12 @@ body {
 
 // posts sidebar
 #sidebar {
+  h4 {
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+  }
   position: relative;
   #profile-content-wrapper {
     flex-wrap: nowrap;

@@ -15,7 +15,7 @@
         </div>
 
         <div id="profile-info">
-          <h4><%= "#{current_user.fullname}" %></h4>
+          <h4><%= link_to current_user.fullname, user_path(current_user) %></h4>
             <ul class="list-inline">
               <li class="list-inline-item"><%= link_to pluralize(@number_of_friends, 'friend'), friends_user_path(@user) %></li>
               <li class="list-inline-item">Joined <%= current_user.date_joined %></li>
