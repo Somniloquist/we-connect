@@ -1,24 +1,29 @@
-<div class="container col-lg-6 mt-25">
-
-  <%= render "friend_requests" if current_user == @user %>  
-
-  <h1>Friends</h1>
-  <% @friends.each do |friend| %>
-    <div class="row friend-card">
-      <div class="col">
-        <div>
-          <%= link_to avatar_for(friend, 50), user_path(friend) %>
-        </div>
-        <div class="friend-card-body">
-          <div class="user-info">
-            <%= link_to "#{friend.fullname}", user_path(friend) %>
-            <%= friend.about %>
-          </div>
-          <div>
-            <%= render partial: "friend_form", locals: { :@user => friend } unless current_user == friend %>
-          </div>
-        </div>
-      </div>
+<div class="container mt-25">
+  <div class="row">
+    <div class="col-12 col-lg-6">
+    <%= render "friend_requests" if current_user == @user %>  
     </div>
-  <% end %>
+
+    <div class="col-12 col-lg-6">
+      <h1>Friends</h1>
+      <% @friends.each do |friend| %>
+        <div class="row friend-card">
+          <div class="col">
+            <div>
+              <%= link_to avatar_for(friend, 50), user_path(friend) %>
+            </div>
+            <div class="friend-card-body">
+              <div class="user-info">
+                <%= link_to "#{friend.fullname}", user_path(friend) %>
+                <%= friend.about %>
+              </div>
+              <div>
+                <%= render partial: "friend_form", locals: { :@user => friend } unless current_user == friend %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
