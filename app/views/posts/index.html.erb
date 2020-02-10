@@ -28,14 +28,18 @@
 
     <div id="feed" class="col-lg-7 col-xl-8">
       <h1>Latest Posts</h1>
-      <div class="container posts-index">
-        <% @posts.each do |post| %>
-          <div class="post-card">
-            <%= render post %>
-          </div>
-        <% end %>
-        <%= will_paginate @posts %>
-      </div>
+      <% if @posts.empty? %>
+         <p>There is nothing here. Try making a post or adding some friends!</p>
+      <% else %>
+        <div class="container posts-index">
+          <% @posts.each do |post| %>
+            <div class="post-card">
+              <%= render post %>
+            </div>
+          <% end %>
+          <%= will_paginate @posts %>
+        </div>
+      <% end %>
     </div>
 
   </div>

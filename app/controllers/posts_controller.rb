@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = current_user.feed.paginate(page: params[:page], per_page: 20)
+    @number_of_friends = Friendship.joins(:user).where(user_id: current_user, accepted?: true).count
   end
 
   def show

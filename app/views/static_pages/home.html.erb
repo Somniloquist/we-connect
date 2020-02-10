@@ -2,16 +2,20 @@
 <% provide(:facebook_btn_text, "Sign up with") %>
 
 <div class="jumbotron">
-  <div class="container">
+  <div class="container welcome">
     <div class="row">
       <div class="col-md">
-        <h1>Connect with people around the world</h1>
-        <ul>
-          <li>See photos and updates</li>
-          <li>Share what's new</li>
-          <li>Discover new connections</li>
-        </ul>
+
+        <div id="call-to-action">
+          <h1>Connect with people around the world</h1>
+          <ul>
+            <li>See photos and updates</li>
+            <li>Share what's new</li>
+            <li>Discover new connections</li>
+          </ul>
+        </div>
       </div>
+
       <div class="form-container col-md">
         <%= render "devise/registrations/form" %>
       </div>

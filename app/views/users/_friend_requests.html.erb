@@ -1,4 +1,4 @@
-<h1>Friend requests</h1>
+<h2><%= pluralize(@pending_friends.size, "friend request") %></h2>
 <% @pending_friends.each do |friend| %>
   <div class="row friend-card">
     <div class="col">

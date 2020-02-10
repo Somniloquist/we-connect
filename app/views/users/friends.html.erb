@@ -5,7 +5,7 @@
     </div>
 
     <div class="col-12 col-lg-6">
-      <h1>Friends</h1>
+      <h2><%= pluralize(@friends.size, "friend") %></h2>
       <% @friends.each do |friend| %>
         <div class="row friend-card">
           <div class="col">
