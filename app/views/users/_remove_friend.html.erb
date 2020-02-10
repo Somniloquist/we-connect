@@ -1,14 +1,14 @@
-<%= form_with url: friendship_path(@user.friendships.first), method: :delete, id: "remove-friend-form" do |f| %>
-  <!-- @user.friendships only contain 1 record due to where query -->
+
+<!-- find the mutual friendship to pass the id to the contorller -->
+<%= form_with url: friendship_path(@user.friendships.find_by(user_id: @user.id)), method: :delete, id: "remove-friend-form" do |f| %>
   <!-- show 'cancel request' button if current user sent the friend request and it has not yet been accepted -->
-  <% if !@user.friendships.first.accepted? && @user.friendships.first.requested_by_id == current_user.id  %>
+  <% if !@user.friendships.find_by(user_id: @user.id).accepted? && @user.friendships.find_by(user_id: @user.id).requested_by_id == current_user.id  %>
     <%= f.submit "Cancel request", class: "btn btn-outline-secondary" %>
   <!-- show 'decline request' button if currentuser did not send the request -->
-  <% elsif !@user.friendships.first.accepted? %>
+  <% elsif !@user.friendships.find_by(user_id: @user.id).accepted? %>
     <%= f.submit "Decline request", class: "btn btn-outline-secondary" %>
   <!-- show 'remove friend button if the friends request was accepted -->
   <% else %>
-
     <%= button_tag type: 'submit', class: "btn btn-primary btn-unfriend", id: "register-button" do %>
       <!-- css target span to set button text on hover, probably breaking some kinda html/css rule with this method -->
       <span></span>
