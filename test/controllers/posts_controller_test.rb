@@ -4,6 +4,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:john)
+    @other_user = users(:jane)
     @post = posts(:orange)
   end
 
@@ -39,7 +40,20 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "destroy should require a logged in user" do
+  test "destroy should require a logged in and correct user" do
+    # not logged in
+    assert_no_difference "Post.count" do
+      delete post_path(@post)
+    end
+
+    # incorrect user
+    sign_in(@user)
+    assert_no_difference "Post.count" do
+      delete post_path(@post)
+    end
+
+    # correct user
+    sign_in(@user)
     assert_no_difference "Post.count" do
       delete post_path(@post)
     end

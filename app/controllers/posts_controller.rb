@@ -28,6 +28,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    if current_user == @post.user
+      @post.delete
+      flash[:success] = "Post deleted!"
+    else
+      flash[:warning] = "Oops, something went wrong."
+    end
+    redirect_back fallback_location: posts_path
   end
 
   def edit
