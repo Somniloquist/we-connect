@@ -507,7 +507,18 @@ body {
     color: rgba(0, 0, 0, 0.5);
   }
 }
-
+.btn-delete {
+  background: #f36;
+  padding: 1px 6px;
+  border-radius: 10px;
+  a {
+    color: #fff;
+    text-decoration: none;
+    &:hover {
+      background: #e36;
+    }
+  } 
+}
 // posts sidebar
 #sidebar {
   h4 {

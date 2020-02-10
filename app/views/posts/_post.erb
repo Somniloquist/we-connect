@@ -32,6 +32,13 @@
         <li id="likes-<%= post.id %>">
           <%= link_to pluralize(post.likes.count, "like"), likes_post_path(post), class: "post-link" %>
         </li>
+        <% if current_user == post.user %>
+          <li class="btn-delete">
+            <%= link_to "delete post", post_path(post), 
+                    data: { confirm: "Are you sure, This action cannot be reversed?"}, 
+                    method: :delete %>
+          </li>
+        <% end %>
       </ul>
     </div>
 
