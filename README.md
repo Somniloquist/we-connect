@@ -1,5 +1,5 @@
 # railsbook
-A facebook clone application. Final project of [The Odin Project](https://www.theodinproject.com/lessons/final-project). Sign up for an account, customize your profile, create posts, upload photos, add friends, like and comments on other user's posts/comments.
+A mock social media appliction. Final project of [The Odin Project](https://www.theodinproject.com/lessons/final-project). Sign up for an account, customize your profile, create posts, upload photos, add friends, like and comments on other user's posts/comments.
 
 ![home page preview](https://github.com/Somniloquist/railsbook/blob/master/public/home.png)
 ![user page preview](https://github.com/Somniloquist/railsbook/blob/master/public/user.png)
