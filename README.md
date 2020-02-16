@@ -7,7 +7,7 @@ A mock social media appliction. Final project of [The Odin Project](https://www.
 ## Try it out on Heroku
 [Try the live version on Heroku here.](https://railsbook-00001.herokuapp.com/)
 
-User the test user account below to login if you wish to skip the signup process
+Use the test user account below to login if you wish to skip the signup process
 ```
 email: testuser@example.com
 password: password
